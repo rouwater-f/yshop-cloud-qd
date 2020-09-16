@@ -203,7 +203,7 @@ const defaultCrud = CRUD({ optShow: {
     edit: false,
     del: false,
     download: true
-  },title: '直播房间', url: 'api/yxWechatLive', sort: 'room_id,desc', crudMethod: { ...crudYxWechatLive }})
+  },title: '直播房间', url: 'mall/yxWechatLive', sort: 'room_id,desc', crudMethod: { ...crudYxWechatLive }})
 const defaultForm = { product: [],roomId: null,productId: null, name: null, coverImge: null, startDate: null, endDate : null,shareImge: null, liveStatus: null,  coverImgArr: [],shareImgArr: [],anchorImgArr: [],startTime: null, endTime: null, anchorName: null, anchorWechat: null, anchorImge: null, type: null, screenType: null, closeLike: null,closeGoods: null, closeComment: null }
 export default {
   name: 'YxWechatLive',

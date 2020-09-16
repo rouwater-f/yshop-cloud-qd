@@ -168,7 +168,7 @@ export default {
     },
     checkPermission,
     beforeInit() {
-      this.url = 'api/yxWechatLiveGoods'
+      this.url = 'mall/yxWechatLiveGoods'
       const sort = 'goods_id,desc'
       this.params = { page: this.page, size: this.size, sort: sort, auditStatus: "2" }
       const query = this.query

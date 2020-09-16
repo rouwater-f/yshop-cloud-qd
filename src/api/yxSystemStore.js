@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function add(data) {
   return request({
-    url: 'api/yxSystemStore',
+    url: 'mall/yxSystemStore',
     method: 'post',
     data
   })
@@ -10,21 +10,21 @@ export function add(data) {
 
 export function get() {
   return request({
-    url: 'api/yxSystemStore',
+    url: 'mall/yxSystemStore',
     method: 'get'
   })
 }
 
 export function getAll() {
   return request({
-    url: 'api/yxSystemStore/all',
+    url: 'mall/yxSystemStore/all',
     method: 'get'
   })
 }
 
 export function getL(data) {
   return request({
-    url: 'api/yxSystemStore/getL',
+    url: 'mall/yxSystemStore/getL',
     method: 'post',
     data
   })
@@ -32,7 +32,7 @@ export function getL(data) {
 
 export function del(ids) {
   return request({
-    url: 'api/yxSystemStore/',
+    url: 'mall/yxSystemStore/',
     method: 'delete',
     data: ids
   })
@@ -40,7 +40,7 @@ export function del(ids) {
 
 export function edit(data) {
   return request({
-    url: 'api/yxSystemStore',
+    url: 'mall/yxSystemStore',
     method: 'put',
     data
   })

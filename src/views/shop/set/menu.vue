@@ -88,7 +88,7 @@ export default {
   methods: {
     checkPermission,
     beforeInit() {
-      this.url = 'api/yxSystemGroupData'
+      this.url = 'mall/yxSystemGroupData'
       const sort = 'id,desc'
       this.params = { page: this.page, size: this.size, sort: sort, groupName: 'yshop_home_menus' }
       return true

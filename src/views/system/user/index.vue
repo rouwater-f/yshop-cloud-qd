@@ -309,7 +309,7 @@ export default {
       })
     },
     beforeInit() {
-      this.url = 'api/users'
+      this.url = 'mall/users'
       return true
     },
     // 新增与编辑前做的操作

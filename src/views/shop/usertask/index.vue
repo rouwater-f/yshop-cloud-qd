@@ -57,7 +57,7 @@ export default {
   methods: {
     checkPermission,
     beforeInit() {
-      this.url = 'api/yxSystemUserTask'
+      this.url = 'mall/yxSystemUserTask'
       const sort = 'id,desc'
       this.params = { page: this.page, size: this.size, sort: sort }
       return true

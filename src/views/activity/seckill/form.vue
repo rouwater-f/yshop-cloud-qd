@@ -571,7 +571,7 @@ export default {
   mounted () {
     this.getInfo(),
     console.log('9999'),
-    initData('api/yxSystemGroupData',{ groupName: 'yshop_seckill_time' }).then(res => {
+    initData('mall/yxSystemGroupData',{ groupName: 'yshop_seckill_time' }).then(res => {
       //console.log(res.content)
       this.myTimes = res.content
     })

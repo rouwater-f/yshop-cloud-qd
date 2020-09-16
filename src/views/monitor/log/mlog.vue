@@ -47,7 +47,7 @@ export default {
   methods: {
     parseTime,
     beforeInit() {
-      this.url = 'api/logs/mlogs'
+      this.url = 'mall/logs/mlogs'
       const query = this.query
       const value = query.value
       this.params = { page: this.page, size: this.size }

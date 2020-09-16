@@ -79,7 +79,7 @@ export default {
   methods: {
     checkPermission,
     beforeInit() {
-      this.url = 'api/yxStoreBargainUser'
+      this.url = 'mall/yxStoreBargainUser'
       const sort = 'id,desc'
       this.params = { page: this.page, size: this.size, sort: sort }
       return true

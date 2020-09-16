@@ -117,7 +117,7 @@ export default {
     formatTimeTwo,
     checkPermission,
     beforeInit() {
-      this.url = 'api/yxUserExtract'
+      this.url = 'mall/yxUserExtract'
       const sort = 'id,desc'
       this.params = { page: this.page, size: this.size, sort: sort }
       const query = this.query

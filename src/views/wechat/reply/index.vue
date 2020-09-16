@@ -183,7 +183,7 @@ export default {
   methods: {
     checkPermission,
     beforeInit() {
-      this.url = 'api/yxWechatReply'
+      this.url = 'mall/yxWechatReply'
       const sort = 'id,desc'
       this.params = { page: this.page, size: this.size, sort: sort }
       return true

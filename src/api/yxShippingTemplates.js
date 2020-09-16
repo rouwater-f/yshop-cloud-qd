@@ -1,8 +1,8 @@
 import request from '@/utils/request'
 
-export function add(data,id) {
+export function add(data, id) {
   return request({
-    url: `api/yxShippingTemplates/save/${id}`,
+    url: `mall/yxShippingTemplates/save/${id}`,
     method: 'post',
     data
   })
@@ -10,7 +10,7 @@ export function add(data,id) {
 
 export function del(ids) {
   return request({
-    url: 'api/yxShippingTemplates/',
+    url: 'mall/yxShippingTemplates/',
     method: 'delete',
     data: ids
   })
@@ -18,7 +18,7 @@ export function del(ids) {
 
 export function edit(data) {
   return request({
-    url: 'api/yxShippingTemplates',
+    url: 'mall/yxShippingTemplates',
     method: 'put',
     data
   })
@@ -26,9 +26,9 @@ export function edit(data) {
 
 export function getCity() {
   return request({
-    url: 'api/yxShippingTemplates/citys',
+    url: 'mall/yxShippingTemplates/citys',
     method: 'get'
-  });
+  })
 }
 
-export default { add, edit, del,getCity }
+export default { add, edit, del, getCity }

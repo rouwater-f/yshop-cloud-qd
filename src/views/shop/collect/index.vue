@@ -89,7 +89,7 @@ import pagination from '@crud/Pagination'
 import MaterialList from "@/components/material";
 
 // crud交由presenter持有
-const defaultCrud = CRUD({ title: 'ProductRelation', url: 'api/yxStoreProductRelation', sort: 'create_time,desc', crudMethod: { ...crudYxStoreProductRelation }})
+const defaultCrud = CRUD({ title: 'ProductRelation', url: 'mall/yxStoreProductRelation', sort: 'create_time,desc', crudMethod: { ...crudYxStoreProductRelation }})
 const defaultForm = { id: null, uid: null, productId: null, type: null, category: null, createTime: null, updateTime: null, isDel: null }
 export default {
   name: 'YxStoreProductRelation',
@@ -121,7 +121,7 @@ export default {
   },
   methods: {
     beforeInit() {
-      this.url = 'api/yxStoreProductRelation'
+      this.url = 'mall/yxStoreProductRelation'
       const sort = 'create_time,desc'
       this.params = { page: this.page, size: this.size, sort: sort }
       const query = this.query

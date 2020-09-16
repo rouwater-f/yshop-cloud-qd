@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function getPage(query) {
   return request({
-    url: 'api/materialgroup/page',
+    url: 'mall/materialgroup/page',
     method: 'get',
     params: query
   })
@@ -10,7 +10,7 @@ export function getPage(query) {
 
 export function addObj(obj) {
   return request({
-    url: 'api/materialgroup',
+    url: 'mall/materialgroup',
     method: 'post',
     data: obj
   })
@@ -18,21 +18,21 @@ export function addObj(obj) {
 
 export function getObj(id) {
   return request({
-    url: 'api/materialgroup/' + id,
+    url: 'mall/materialgroup/' + id,
     method: 'get'
   })
 }
 
 export function delObj(id) {
   return request({
-    url: 'api/materialgroup/' + id,
+    url: 'mall/materialgroup/' + id,
     method: 'delete'
   })
 }
 
 export function putObj(obj) {
   return request({
-    url: 'api/materialgroup',
+    url: 'mall/materialgroup',
     method: 'put',
     data: obj
   })

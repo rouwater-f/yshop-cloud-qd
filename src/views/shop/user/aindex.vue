@@ -125,7 +125,7 @@ export default {
         .catch(() => { })
     },
     beforeInit() {
-      this.url = 'api/yxUser'
+      this.url = 'mall/yxUser'
       const sort = 'uid,desc'
       this.params = { page: this.page, size: this.size, sort: sort, isPromoter: 1 }
       const query = this.query

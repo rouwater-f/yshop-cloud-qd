@@ -107,7 +107,7 @@ export default {
     formatTime,
     checkPermission,
     beforeInit() {
-      this.url = 'api/yxArticle'
+      this.url = 'mall/yxArticle'
       const sort = 'id,desc'
       this.params = { page: this.page, size: this.size, sort: sort }
       return true

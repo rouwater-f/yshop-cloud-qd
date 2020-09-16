@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function add(data) {
   return request({
-    url: 'api/yxWechatLive',
+    url: 'mall/yxWechatLive',
     method: 'post',
     data
   })
@@ -10,7 +10,7 @@ export function add(data) {
 
 export function del(ids) {
   return request({
-    url: 'api/yxWechatLive/',
+    url: 'mall/yxWechatLive/',
     method: 'delete',
     data: ids
   })
@@ -18,7 +18,7 @@ export function del(ids) {
 
 export function edit(data) {
   return request({
-    url: 'api/yxWechatLive',
+    url: 'mall/yxWechatLive',
     method: 'put',
     data
   })
@@ -26,7 +26,7 @@ export function edit(data) {
 
 export function sync() {
   return request({
-    url: 'api/yxWechatLive/synchro',
+    url: 'mall/yxWechatLive/synchro',
     method: 'get'
   })
 }

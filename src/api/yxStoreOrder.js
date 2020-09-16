@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function add(data) {
   return request({
-    url: 'api/yxStoreOrder',
+    url: 'mall/yxStoreOrder',
     method: 'post',
     data
   })
@@ -10,14 +10,14 @@ export function add(data) {
 
 export function del(id) {
   return request({
-    url: 'api/yxStoreOrder/' + id,
+    url: 'mall/yxStoreOrder/' + id,
     method: 'delete'
   })
 }
 
 export function edit(data) {
   return request({
-    url: 'api/yxStoreOrder',
+    url: 'mall/yxStoreOrder',
     method: 'put',
     data
   })
@@ -25,16 +25,15 @@ export function edit(data) {
 
 export function editT(data) {
   return request({
-    url: 'api/yxStoreOrder/check',
+    url: 'mall/yxStoreOrder/check',
     method: 'put',
     data
   })
 }
 
-
 export function refund(data) {
   return request({
-    url: 'api/yxStoreOrder/refund',
+    url: 'mall/yxStoreOrder/refund',
     method: 'post',
     data
   })
@@ -42,7 +41,7 @@ export function refund(data) {
 
 export function editOrder(data) {
   return request({
-    url: 'api/yxStoreOrder/edit',
+    url: 'mall/yxStoreOrder/edit',
     method: 'post',
     data
   })
@@ -50,7 +49,7 @@ export function editOrder(data) {
 
 export function remark(data) {
   return request({
-    url: 'api/yxStoreOrder/remark',
+    url: 'mall/yxStoreOrder/remark',
     method: 'post',
     data
   })
@@ -58,14 +57,14 @@ export function remark(data) {
 
 export function get() {
   return request({
-    url: 'api/yxExpress',
+    url: 'mall/yxExpress',
     method: 'get'
   })
 }
 
 export function express(data) {
   return request({
-    url: 'api/yxStoreOrder/express',
+    url: 'mall/yxStoreOrder/express',
     method: 'post',
     data
   })

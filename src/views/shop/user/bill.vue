@@ -169,7 +169,7 @@ export default {
         .catch(() => { })
     },
     beforeInit() {
-      this.url = 'api/yxUserBill'
+      this.url = 'mall/yxUserBill'
       const sort = 'id,desc'
       this.params = {
         page: this.page,

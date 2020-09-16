@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function add(data, id) {
   return request({
-    url: `api/yxStoreProductRule/save/${id}`,
+    url: `mall/yxStoreProductRule/save/${id}`,
     method: 'post',
     data
   })
@@ -10,7 +10,7 @@ export function add(data, id) {
 
 export function del(ids) {
   return request({
-    url: 'api/yxStoreProductRule/',
+    url: 'mall/yxStoreProductRule/',
     method: 'delete',
     data: ids
   })
@@ -18,17 +18,17 @@ export function del(ids) {
 
 export function edit(data) {
   return request({
-    url: 'api/yxStoreProductRule',
+    url: 'mall/yxStoreProductRule',
     method: 'put',
     data
   })
 }
 
-export function info (id) {
+export function info(id) {
   return request({
-    url: `api/yxStoreProductRule/rule/${id}`,
+    url: `mall/yxStoreProductRule/rule/${id}`,
     method: 'get'
-  });
+  })
 }
 
 export default { add, edit, del, info }

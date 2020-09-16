@@ -99,7 +99,7 @@ export default {
     formatTimeTwo,
     checkPermission,
     beforeInit() {
-      this.url = 'api/yxStoreCouponUser'
+      this.url = 'mall/yxStoreCouponUser'
       const sort = 'id,desc'
       this.params = { page: this.page, size: this.size, sort: sort }
       const query = this.query
