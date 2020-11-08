@@ -61,7 +61,7 @@ import crudOperation from '@crud/CRUD.operation'
 import pagination from '@crud/Pagination'
 
 // crud交由presenter持有
-const defaultCrud = CRUD({ title: '日志', url: 'mall/logs' })
+const defaultCrud = CRUD({ title: '日志', url: 'system/logs' })
 export default {
   name: 'Log',
   components: { Search, crudOperation, pagination },
