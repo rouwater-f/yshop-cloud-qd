@@ -129,7 +129,7 @@ export default {
   methods: {
     checkPermission,
     beforeInit() {
-      this.url = 'mall/YxWechatMenu'
+      this.url = 'weixin/YxWechatMenu'
       const sort = 'key,desc'
       this.params = { page: this.page, size: this.size, sort: sort }
       return true

@@ -91,7 +91,7 @@ export default {
   methods: {
     checkPermission,
     beforeInit() {
-      this.url = 'mall/yxWechatTemplate'
+      this.url = 'weixin/yxWechatTemplate'
       const sort = 'id,desc'
       this.params = { page: this.page, size: this.size, sort: sort }
       return true

@@ -153,7 +153,7 @@ import pagination from '@crud/Pagination'
 import cgood from '@/views/components/good'
 import singlePic from '@/components/singlematerial'
 // crud交由presenter持有
-const defaultCrud = CRUD({ title: '直播商品', url: 'mall/yxWechatLiveGoods', sort: 'goods_id,desc', crudMethod: { ...crudYxWechatLiveGoods }})
+const defaultCrud = CRUD({ title: '直播商品', url: 'weixin/yxWechatLiveGoods', sort: 'goods_id,desc', crudMethod: { ...crudYxWechatLiveGoods }})
 const defaultForm = {   good: {productId: null,storeName: null,image: null,price: null,otPrice: null}, goodsId: null, productId: null, coverImgeUrl: '', url: null, priceType: null, price: null, price2: null, name: null, thirdPartyTag: null, auditId: null, auditStatus: null }
 export default {
   name: 'YxWechatLiveGoods',

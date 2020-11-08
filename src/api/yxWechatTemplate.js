@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function add(data) {
   return request({
-    url: 'mall/yxWechatTemplate',
+    url: 'weixin/yxWechatTemplate',
     method: 'post',
     data
   })
@@ -10,14 +10,14 @@ export function add(data) {
 
 export function del(id) {
   return request({
-    url: 'mall/yxWechatTemplate/' + id,
+    url: 'weixin/yxWechatTemplate/' + id,
     method: 'delete'
   })
 }
 
 export function edit(data) {
   return request({
-    url: 'mall/yxWechatTemplate',
+    url: 'weixin/yxWechatTemplate',
     method: 'put',
     data
   })
@@ -25,7 +25,7 @@ export function edit(data) {
 
 export function get() {
   return request({
-    url: 'mall/yxWechatTemplate',
+    url: 'weixin/yxWechatTemplate',
     method: 'get'
   })
 }
