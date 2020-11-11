@@ -10,7 +10,7 @@ export function del(keys) {
 
 export function delT(keys) {
   return request({
-    url: 'auth/online/delete',
+    url: 'system/online/delete',
     method: 'post',
     data: keys
   })
