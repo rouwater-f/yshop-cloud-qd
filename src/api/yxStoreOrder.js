@@ -70,3 +70,9 @@ export function express(data) {
   })
 }
 
+export function getOrderDetail(id) {
+  return request({
+    url: 'mall/getStoreOrderDetail/' + id,
+    method: 'get'
+  })
+}
