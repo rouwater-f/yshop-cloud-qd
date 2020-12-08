@@ -76,3 +76,10 @@ export function getOrderDetail(id) {
     method: 'get'
   })
 }
+
+export function getNowOrderStatus(id) {
+  return request({
+    url: 'mall/getNowOrderStatus/' + id,
+    method: 'get'
+  })
+}
