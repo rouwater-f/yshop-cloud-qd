@@ -169,7 +169,7 @@ export default {
       }
     },
     beforeInit() {
-      this.url = 'mall/logs/user'
+      this.url = 'system/logs/user'
       return true
     },
     handleSuccess(response, file, fileList) {
