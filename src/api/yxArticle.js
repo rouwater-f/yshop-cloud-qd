@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function add(data) {
   return request({
-    url: 'mall/yxArticle',
+    url: 'weixin/yxArticle',
     method: 'post',
     data
   })
@@ -10,14 +10,14 @@ export function add(data) {
 
 export function del(id) {
   return request({
-    url: 'mall/yxArticle/' + id,
+    url: 'weixin/yxArticle/' + id,
     method: 'delete'
   })
 }
 
 export function edit(data) {
   return request({
-    url: 'mall/yxArticle',
+    url: 'weixin/yxArticle',
     method: 'put',
     data
   })
@@ -25,14 +25,14 @@ export function edit(data) {
 
 export function publish(id) {
   return request({
-    url: 'mall/yxArticle/publish/' + id,
+    url: 'weixin/yxArticle/publish/' + id,
     method: 'get'
   })
 }
 
 export function get(id) {
   return request({
-    url: 'mall/yxArticle/info/' + id,
+    url: 'weixin/yxArticle/info/' + id,
     method: 'get'
   })
 }
