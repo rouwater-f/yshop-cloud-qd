@@ -168,7 +168,7 @@ export default {
     },
     checkPermission,
     beforeInit() {
-      this.url = 'mall/yxWechatLiveGoods'
+      this.url = 'weixin/yxWechatLiveGoods'
       const sort = 'goods_id,desc'
       this.params = { page: this.page, size: this.size, sort: sort, auditStatus: "2" }
       const query = this.query
