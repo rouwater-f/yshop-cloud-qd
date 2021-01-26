@@ -24,7 +24,7 @@ export function edit(data) {
 }
 export function updateDelivery(data) {
   return request({
-    url: 'api/yxStoreOrder/updateDelivery',
+    url: 'mall/yxStoreOrder/updateDelivery',
     method: 'put',
     data
   })
