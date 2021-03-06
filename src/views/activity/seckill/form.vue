@@ -3,25 +3,25 @@
     <el-card :bordered="false">
       <el-form  ref="formValidate" :rules="ruleValidate" :model="formValidate" label-width="130px" >
         <el-row :gutter="24">
-            <!-- 商品信息-->
+          <!-- 商品信息-->
           <el-col :span="24">
             <el-form-item label="选择商品：" prop="good">
-              <cgood v-model="form1.good":disabled="true" ></cgood>
+              <cgood v-model="form1.good" ></cgood>
             </el-form-item>
           </el-col>
           <el-col :span="24">
             <el-form-item label="秒杀名称">
-              <el-input v-model="formValidate.title" style="width: 500px;" />
+              <el-input v-model="formValidate.title" @input="onInput()" style="width: 500px;" />
             </el-form-item>
           </el-col>
           <el-col :span="24">
             <el-form-item label="秒杀简介">
-              <el-input v-model="formValidate.info" style="width: 500px;" />
+              <el-input v-model="formValidate.info" @input="onInput()" style="width: 500px;" />
             </el-form-item>
           </el-col>
           <el-col :span="24">
             <el-form-item label="单位">
-              <el-input v-model="formValidate.unitName" style="width: 500px;" />
+              <el-input v-model="formValidate.unitName" @input="onInput()" style="width: 500px;" />
             </el-form-item>
           </el-col>
           <el-col :span="24">
@@ -65,7 +65,7 @@
           </el-col>
           <el-col :span="24">
             <el-form-item label="产品轮播图">
-              <MaterialList v-model="formValidate.sliderImageArr" style="width: 500px" type="image" :num="4" :width="150" :height="150" />
+              <MaterialList v-model="formValidate.slider_image" style="width: 500px" type="image" :num="4" :width="150" :height="150" />
             </el-form-item>
           </el-col>
           <el-col :span="24">
@@ -92,34 +92,34 @@
             <!-- 多规格表格-->
             <el-col :span="24">
               <el-form-item label="商品属性：" class="labeltop">
-                <el-table :data="manyFormValidate"  border>
+                <el-table :data="manyFormValidate"  size="small" style="width: 90%;">
                   <el-table-column type="myindex" v-for="(item,index) in formValidate.header" :key="index" :label="item.title" :property="item.slot" align="center">
                     <template slot-scope="scope">
                       <div v-if="scope.column.property == 'pic'">
-                        <single-pic v-model="scope.row[scope.column.property]" type="image" :num="1" :width="60" :height="60" />
+                        <single-pic v-model="scope.row[scope.column.property]" type="image" :num="1" :width="60" :height="60"  align="center"/>
                       </div>
-                      <div v-else-if="scope.column.property.indexOf('value') != -1" >
-                       {{ scope.row[scope.column.property] }}
+                      <div v-else-if="scope.column.property.indexOf('value') != -1"  align="center">
+                        {{ scope.row[scope.column.property] }}
                       </div>
-                      <div v-else-if="scope.column.property == 'seckill_price'||scope.column.property == 'seckill_stock'"  >
+                      <div v-else-if="scope.column.property == 'seckill_price'||scope.column.property == 'seckill_stock'"  align="center" >
                         <el-input  v-model="scope.row[scope.column.property]"/>
                       </div>
-                      <div v-else-if="scope.column.property == 'action'"  >
+                      <div v-else-if="scope.column.property == 'action'"  align="center" >
                         <a  :disabled="true">不可删除</a>
                       </div>
                       <div v-else>
-                        <el-input  v-model="scope.row[scope.column.property]" :disabled="true"/>
+                        <el-input  v-model="scope.row[scope.column.property]" :disabled="true"  align="center"/>
                       </div>
                     </template>
                   </el-table-column>
                 </el-table>
               </el-form-item>
-          </el-col>
+            </el-col>
           </el-col>
           <!-- 单规格表格-->
           <el-col :xl="23" :lg="24" :md="24" :sm="24" :xs="24" v-if="formValidate.spec_type === 0">
             <el-form-item >
-              <el-table :data="oneFormValidate" border>
+              <el-table :data="oneFormValidate" size="small" style="width: 90%;">
                 <el-table-column prop="pic" label="图片" align="center">
                   <template slot-scope="scope">
                     <single-pic v-model="scope.row.pic" type="image" :num="1" :width="60" :height="60" />
@@ -166,9 +166,14 @@
                     <el-input type="text" v-model="scope.row.weight" :disabled="true"/>
                   </template>
                 </el-table-column>
-                <el-table-column prop="volume" label="体积(m³" align="center">
+                <el-table-column prop="volume" label="体积(m³)" align="center">
                   <template slot-scope="scope">
                     <el-input type="text" v-model="scope.row.volume" :disabled="true"/>
+                  </template>
+                </el-table-column>
+                <el-table-column prop="volume" label="所需兑换积分" align="center">
+                  <template slot-scope="scope">
+                    <el-input type="text" v-model="scope.row.integral"/>
                   </template>
                 </el-table-column>
               </el-table>
@@ -189,93 +194,6 @@
           <el-col :span="24">
             <el-form-item label="商品详情：">
               <ueditor-wrap v-model="formValidate.description" :config="myConfig"  @beforeInit="addCustomDialog"  style="width: 90%;"></ueditor-wrap>
-            </el-form-item>
-          </el-col>
-        </el-row>
-        <el-row>
-          <el-col v-bind="grid">
-            <el-form-item label="虚拟：">
-              <el-input-number  :min="0" v-model="formValidate.sales" placeholder="请输入销量"  :disabled="true"/>
-            </el-form-item>
-          </el-col>
-          <el-col v-bind="grid">
-            <el-form-item label="排序：">
-              <el-input-number :min="0"  v-model="formValidate.sort" placeholder="请输入排序" :disabled="true"/>
-            </el-form-item>
-          </el-col>
-          <el-col :span="24">
-            <el-form-item label="佣金设置：">
-              <el-radio-group v-model="formValidate.is_sub" :disabled="true" >
-                <el-radio :label="1" class="radio">单独设置</el-radio>
-                <el-radio :label="0">默认设置</el-radio>
-              </el-radio-group>
-            </el-form-item>
-          </el-col>
-          <el-col :span="24" v-if="formValidate.is_sub === 1">
-            <!--单规格返佣-->
-            <el-form-item label="" v-if="formValidate.spec_type === 0">
-              <el-table :data="oneFormValidate"  border>
-                <el-table-column prop="imageArr" label="图片" align="center">
-                  <template slot-scope="scope">
-                    <el-image :src="scope.row.pic" fit="contain">
-                      <div slot="error" class="image-slot">
-                        <i class="el-icon-picture-outline"></i>
-                      </div>
-                    </el-image>
-                  </template>
-                </el-table-column>
-                <el-table-column prop="price" label="售价" align="center" />
-                <el-table-column prop="cost" label="成本价" align="center" />
-                <el-table-column prop="ot_price" label="原价" align="center" />
-                <el-table-column prop="stock" label="库存" align="center" />
-                <el-table-column prop="pink_price" label="秒杀价" align="center" />
-                <el-table-column prop="pink_stock" label="秒杀库存" align="center" />
-                <el-table-column prop="bar_code" label="商品编号" align="center" />
-                <el-table-column prop="weight" label="重量（KG）" align="center" />
-                <el-table-column prop="volume" label="体积(m³" align="center" />
-                <el-table-column prop="volume" label="一级返佣" align="center">
-                  <template slot-scope="scope">
-                    <el-input type="text" v-model="scope.row.brokerage" :disabled="true"/>
-                  </template>
-                </el-table-column>
-                <el-table-column prop="volume" label="二级返佣" align="center">
-                  <template slot-scope="scope">
-                    <el-input type="text" v-model="scope.row.brokerage_two" :disabled="true"/>
-                  </template>
-                </el-table-column>
-              </el-table>
-            </el-form-item>
-            <el-form-item label="" v-if="formValidate.spec_type === 1 && manyFormValidate.length">
-              <el-table :data="manyFormValidate" border>
-                <el-table-column prop="imageArr" label="图片" align="center">
-                  <template slot-scope="scope">
-                    <el-image :src="scope.row.pic" fit="contain">
-                      <div slot="error" class="image-slot">
-                        <i class="el-icon-picture-outline"></i>
-                      </div>
-                    </el-image>
-                  </template>
-                </el-table-column>
-                <el-table-column prop="price" label="售价" align="center" />
-                <el-table-column prop="cost" label="成本价" align="center" />
-                <el-table-column prop="ot_price" label="原价" align="center" />
-                <el-table-column prop="stock" label="库存" align="center" />
-                <el-table-column prop="seckill_price" label="秒杀价" align="center" />
-                <el-table-column prop="seckill_stock" label="秒杀库存" align="center" />
-                <el-table-column prop="bar_code" label="商品编号" align="center" />
-                <el-table-column prop="weight" label="重量（KG）" align="center" />
-                <el-table-column prop="volume" label="体积(m³" align="center" />
-                <el-table-column prop="volume" label="一级返佣" align="center">
-                  <template slot-scope="scope">
-                    <el-input type="text" v-model="scope.row.brokerage":disabled="true"/>
-                  </template>
-                </el-table-column>
-                <el-table-column prop="volume" label="二级返佣" align="center">
-                  <template slot-scope="scope">
-                    <el-input type="text" v-model="scope.row.brokerage_two":disabled="true"/>
-                  </template>
-                </el-table-column>
-              </el-table>
             </el-form-item>
           </el-col>
         </el-row>
@@ -305,20 +223,6 @@ export default {
   data() {
     return {
       spinShow: false,myTimes: [],
-      grid2: {
-        xl: 10,
-        lg: 12,
-        md: 12,
-        sm: 24,
-        xs: 24
-      },
-      grid3: {
-        xl: 18,
-        lg: 18,
-        md: 20,
-        sm: 24,
-        xs: 24
-      },
       // 批量设置表格data
       oneFormBatch: [
         {
@@ -331,7 +235,8 @@ export default {
           seckill_stock: 0,
           seckill_price: 0,
           weight: 0,
-          volume: 0
+          volume: 0,
+          integral:0
         }
       ],
       // 规格数据
@@ -339,7 +244,6 @@ export default {
         attrsName: '',
         attrsVal: ''
       },
-      formDynamicNameData: [],
       isBtn: false,
       myConfig: {
         autoHeightEnabled: false, // 编辑器不自动被内容撑高
@@ -348,89 +252,17 @@ export default {
         UEDITOR_HOME_URL: '/UEditor/',
         serverUrl: ''
       },
-      columns2: [
-        {
-          title: '图片',
-          slot: 'pic',
-          align: 'center',
-          minWidth: 80
-        },
-        {
-          title: '售价',
-          slot: 'price',
-          align: 'center',
-          minWidth: 95,
-          disabled: true
-        },
-        {
-          title: '成本价',
-          slot: 'cost',
-          align: 'center',
-          minWidth: 95
-        },
-        {
-          title: '原价',
-          slot: 'ot_price',
-          align: 'center',
-          minWidth: 95
-        },
-        {
-          title: '库存',
-          slot: 'stock',
-          align: 'center',
-          minWidth: 95
-        },
-        {
-          title: '商品编号',
-          slot: 'bar_code',
-          align: 'center',
-          minWidth: 120
-        },
-        {
-          title: '重量（KG）',
-          slot: 'weight',
-          align: 'center',
-          minWidth: 95
-        },
-        {
-          title: '体积(m³)',
-          slot: 'volume',
-          align: 'center',
-          minWidth: 95
-        },
-        {
-          title: '操作',
-          slot: 'action',
-          fixed: 'right',
-          align: 'center',
-          minWidth: 140
-        }
-      ],
-      columns: [],
-      gridPic: {
-        xl: 6,
-        lg: 8,
-        md: 12,
-        sm: 12,
-        xs: 12
-      },
-      gridBtn: {
-        xl: 4,
-        lg: 8,
-        md: 8,
-        sm: 8,
-        xs: 8
-      },
       form1: {
         good:{
 
         }
       },
       formValidate: {
+        slider_image: [],
         otPrice: '',
         giveIntegral: '',
         status: '',
-        num: '',
+        num: 1,
         id: 0,
         timeId: null,
         seckillId: 0,
@@ -445,16 +277,17 @@ export default {
         people: '',
         info: '',
         price: '',
-        sort: '',
+        sort: 0,
         sales: '',
         stock: '',
+        integral: 0,
         addTime: '',
         isHost: '',
         isShow: '',
         isDel: 0,
         merUse: '',
         isPostage: '',
-        postage: '',
+        postage: 0,
         description: '',
         startTime: '',
         stopTime: '',
@@ -478,7 +311,8 @@ export default {
             cost: 0,
             ot_price: 0,
             stock: 0,
-            bar_code: ''
+            bar_code: '',
+            integral: 0
           }
         ],
         header: [],
@@ -506,6 +340,7 @@ export default {
           weight: 0,
           volume: 0,
           brokerage: 0,
+          integral: 0,
           brokerage_two: 0
         }
       ],
@@ -550,14 +385,9 @@ export default {
     }
   },
   watch: {
-    // 'formValidate.imageArr': function(val) {
-    //   if (val) {
-    //     this.formValidate.image = val.join(',')
-    //   }
-    // },
 
     'formValidate.slider_image': function(val) {
-      if (val) {
+      if (val && Array.isArray(val)) {
         this.formValidate.images = val.join(',')
       }
     },
@@ -565,18 +395,18 @@ export default {
       handler(val,oldVal){
         this.getInfoChooseGood (val.cform.id)
       },
-      deep:true//对象内部的属性监听，也叫深度监听
     },
   },
   mounted () {
     this.getInfo(),
-    console.log('9999'),
-    initData('mall/yxSystemGroupData',{ groupName: 'yshop_seckill_time' }).then(res => {
-      //console.log(res.content)
-      this.myTimes = res.content
-    })
+      initData('api/yxSystemGroupData',{ groupName: 'yshop_seckill_time' }).then(res => {
+        this.myTimes = res.content
+      })
   },
   methods: {
+    onInput(){
+      this.$forceUpdate();
+    },
     confirm () {
       let that = this;
       that.createBnt = true;
@@ -605,7 +435,7 @@ export default {
     },
     // 立即生成
     generate (data) {
-      isFormatAttrForActivity(data===null?this.formValidate.id:data, { attrs: this.attrs }).then(res => {
+      isFormatAttrForActivity(data===null?this.formValidate.productId:data, { attrs: this.attrs }).then(res => {
         this.manyFormValidate = res.value;
         let headerdel = {
           title: '操作',
@@ -625,10 +455,7 @@ export default {
           this.oneFormBatch[0].pic = this.formValidate.image;
         }
       }).catch(res => {
-        // this.$message({
-        //   message:res.msg,
-        //   type: 'error'
-        // });
+        this.$message.error(res.msg);
       })
     },
     // 取消
@@ -698,15 +525,20 @@ export default {
         if(data){
           let cate_id = parseInt(data.cate_id) || 0;
           that.attrs = data.items || [];
-          that.formValidate = data;
-          that.formValidate.productId = data.id
+          //that.formValidate = data;
+          Object.keys(that.formValidate).forEach(key=>{
+            if(data[key]) that.formValidate[key] = data[key];
+          })
+          that.formValidate.id = 0;
+          that.formValidate.productId = id
           that.formValidate.cate_id = cate_id;
           that.oneFormValidate = [data.attr];
           that.formValidate.title = data.store_name
           that.formValidate.info = data.store_info
           that.formValidate.unitName = data.unit_name
-          that.formValidate.sliderImageArr = data.slider_image
+          //that.formValidate.sliderImageArr = data.slider_image
           that.formValidate.status = 1
+          //that.formValidate.num = 1
           that.formValidate.header = [];
           that.generate(null);
           that.manyFormValidate = data.attrs;
@@ -729,6 +561,7 @@ export default {
                 weight:0,
                 volume:0,
                 brokerage:0,
+                integral: 0,
                 brokerage_two:0
               }
             ]
@@ -739,10 +572,7 @@ export default {
         that.templateList = res.tempList;
       }).catch(res => {
         console.log('err:'+res)
-        return this.$message({
-          message:res.msg,
-          type: 'error'
-        });
+        this.$message.error(res.msg);
       })
     },
 
@@ -784,6 +614,7 @@ export default {
                 weight:0,
                 volume:0,
                 brokerage:0,
+                integral: 0,
                 brokerage_two:0
               }
             ]
@@ -795,11 +626,7 @@ export default {
         that.templateList = res.tempList;
 
       }).catch(res => {
-        console.log('err:'+res)
-        return this.$message({
-          message:res.msg,
-          type: 'error'
-        });
+        this.$message.error(res.msg);
       })
     },
     // 提交
@@ -826,10 +653,7 @@ export default {
               this.$router.push({ path: '/activity/seckill' });
             }, 500);
           }).catch(res => {
-            // this.$message({
-            //   message:res.message,
-            //   type: 'error'
-            // });
+            this.$message.error(res.msg);
           })
         } else {
           if(!this.formValidate.store_name || !this.formValidate.cate_id || !this.formValidate.keyword
@@ -881,34 +705,34 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-  .submission
-    margin-left 10px;
-  .color-list .tip{
-    color: #c9c9c9;
-  }
-  .color-list .color-item{
-    height: 30px;
-    line-height: 30px;
-    padding: 0 10px;
-    color:#fff;
-    margin-right :10px;
-  }
-  .color-list .color-item.blue{
-    background-color: #1E9FFF;
-  }
-  .color-list .color-item.yellow{
-    background-color: rgb(254, 185, 0);
-  }
-  .color-list .color-item.green{
-    background-color: #009688;
-  }
-  .columnsBox
-    margin-right 10px
-  .priceBox
-    width 100%
-  .rulesBox
-    display flex
-    flex-wrap: wrap;
-  .curs
-    cursor pointer
+.submission
+  margin-left 10px;
+.color-list .tip{
+  color: #c9c9c9;
+}
+.color-list .color-item{
+  height: 30px;
+  line-height: 30px;
+  padding: 0 10px;
+  color:#fff;
+  margin-right :10px;
+}
+.color-list .color-item.blue{
+  background-color: #1E9FFF;
+}
+.color-list .color-item.yellow{
+  background-color: rgb(254, 185, 0);
+}
+.color-list .color-item.green{
+  background-color: #009688;
+}
+.columnsBox
+  margin-right 10px
+.priceBox
+  width 100%
+.rulesBox
+  display flex
+  flex-wrap: wrap;
+.curs
+  cursor pointer
 </style>

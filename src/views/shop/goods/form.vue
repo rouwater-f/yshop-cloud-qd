@@ -13,7 +13,7 @@
             <el-form-item label="商品分类：" prop="cate_id">
               <el-select v-model="formValidate.cate_id" filterable :filter-method="dataFilter" clearable>
                 <el-option v-for="item in optionsMetaShow" :disabled="item.disabled === 0"
-                :value="item.value" :key="item.id" :label="item.label" ></el-option>
+                           :value="item.value" :key="item.id" :label="item.label" ></el-option>
               </el-select>
             </el-form-item>
           </el-col>
@@ -47,6 +47,14 @@
               <el-radio-group v-model="formValidate.spec_type"  @change="changeSpec">
                 <el-radio :label="0" class="radio">单规格</el-radio>
                 <el-radio :label="1">多规格{{formValidate.spec_typ}}</el-radio>
+              </el-radio-group>
+            </el-form-item>
+          </el-col>
+          <el-col :span="24">
+            <el-form-item label="开启积分兑换：" props="is_integral">
+              <el-radio-group v-model="formValidate.is_integral"  @change="changeSpec">
+                <el-radio :label="0" class="radio">不开启</el-radio>
+                <el-radio :label="1">开启</el-radio>
               </el-radio-group>
             </el-form-item>
           </el-col>
@@ -97,8 +105,8 @@
               </el-col>
               <el-col :xl="6" :lg="5" :md="10" :sm="24" :xs="24" >
 
-                  <el-button type="primary"    @click="createAttrName">确定</el-button>
-                  <el-button type="danger" @click="offAttrName" >取消</el-button>
+                <el-button type="primary"    @click="createAttrName">确定</el-button>
+                <el-button type="danger" @click="offAttrName" >取消</el-button>
 
               </el-col>
             </el-col>
@@ -107,22 +115,20 @@
               <!-- 多规格表格-->
               <el-col :span="24">
                 <el-form-item label="商品属性：" class="labeltop">
-
-
-                  <el-table :data="manyFormValidate"  border>
+                  <el-table :data="manyFormValidate" size="small" style="width: 90%;">
                     <el-table-column type="myindex" v-for="(item,index) in formValidate.header" :key="index" :label="item.title" :property="item.slot" align="center">
                       <template slot-scope="scope">
-                        <div v-if="scope.column.property == 'pic'">
+                        <div v-if="scope.column.property == 'pic'" align="center">
                           <single-pic v-model="scope.row[scope.column.property]" type="image" :num="1" :width="60" :height="60" />
                         </div>
-                        <div v-else-if="scope.column.property.indexOf('value') != -1">
-                         {{ scope.row[scope.column.property] }}
+                        <div v-else-if="scope.column.property.indexOf('value') != -1" align="center">
+                          {{ scope.row[scope.column.property] }}
                         </div>
-                        <div v-else-if="scope.column.property == 'action'"  >
-                          <a @click="delAttrTable(scope.$index)">删除</a>
+                        <div v-else-if="scope.column.property == 'action'" align="center" >
+                          <a @click="delAttrTable(scope.$index)" align="center">删除</a>
                         </div>
-                        <div v-else>
-                          <el-input  v-model="scope.row[scope.column.property]" />
+                        <div v-else align="center">
+                          <el-input  v-model="scope.row[scope.column.property]" align="center" />
                         </div>
                       </template>
                     </el-table-column>
@@ -135,7 +141,7 @@
           <!-- 单规格表格-->
           <el-col :xl="23" :lg="24" :md="24" :sm="24" :xs="24" v-if="formValidate.spec_type === 0">
             <el-form-item >
-              <el-table :data="oneFormValidate" border>
+              <el-table :data="oneFormValidate"  size="small" style="width: 90%;">
                 <el-table-column prop="pic" label="图片" align="center">
                   <template slot-scope="scope">
                     <single-pic v-model="scope.row.pic" type="image" :num="1" :width="60" :height="60" />
@@ -171,9 +177,14 @@
                     <el-input type="text" v-model="scope.row.weight"/>
                   </template>
                 </el-table-column>
-                <el-table-column prop="volume" label="体积(m³" align="center">
+                <el-table-column prop="volume" label="体积(m³)" align="center">
                   <template slot-scope="scope">
                     <el-input type="text" v-model="scope.row.volume"/>
+                  </template>
+                </el-table-column>
+                <el-table-column prop="volume" label="所需兑换积分" align="center">
+                  <template slot-scope="scope">
+                    <el-input type="text" v-model="scope.row.integral"/>
                   </template>
                 </el-table-column>
               </el-table>
@@ -204,7 +215,7 @@
             </el-form-item>
           </el-col>
           <el-col v-bind="grid">
-            <el-form-item label="积分：">
+            <el-form-item label="购买返回积分：">
               <el-input-number  v-model="formValidate.give_integral" :min="0" placeholder="请输入积分" />
             </el-form-item>
           </el-col>
@@ -224,10 +235,10 @@
           <el-col :span="24" v-if="formValidate.is_sub === 1">
             <!--单规格返佣-->
             <el-form-item label="商品属性：" v-if="formValidate.spec_type === 0">
-              <el-table :data="oneFormValidate"  border>
+              <el-table :data="oneFormValidate"  size="small" style="width: 90%;">
                 <el-table-column prop="imageArr" label="图片" align="center">
                   <template slot-scope="scope">
-                    <el-image :src="scope.row.pic" fit="contain">
+                    <el-image :src="scope.row.pic" class="el-avatar">
                       <div slot="error" class="image-slot">
                         <i class="el-icon-picture-outline"></i>
                       </div>
@@ -254,23 +265,25 @@
               </el-table>
             </el-form-item>
             <el-form-item label="商品属性：" v-if="formValidate.spec_type === 1 && manyFormValidate.length">
-              <el-table :data="manyFormValidate" border>
+              <el-table :data="manyFormValidate" size="small" style="width: 90%;">
                 <el-table-column prop="imageArr" label="图片" align="center">
                   <template slot-scope="scope">
-                    <el-image :src="scope.row.pic" fit="contain">
+                    <el-image :src="scope.row.pic" :width="60" :height="60" >
                       <div slot="error" class="image-slot">
                         <i class="el-icon-picture-outline"></i>
                       </div>
                     </el-image>
                   </template>
                 </el-table-column>
+                <el-table-column prop="sku" label="规格" align="center" />
                 <el-table-column prop="price" label="售价" align="center" />
                 <el-table-column prop="cost" label="成本价" align="center" />
                 <el-table-column prop="ot_price" label="原价" align="center" />
                 <el-table-column prop="stock" label="库存" align="center" />
                 <el-table-column prop="bar_code" label="商品编号" align="center" />
                 <el-table-column prop="weight" label="重量（KG）" align="center" />
-                <el-table-column prop="volume" label="体积(m³" align="center" />
+                <el-table-column prop="volume" label="体积(m³)" align="center" />
+                <el-table-column prop="integral" label="所需兑换积分" align="center" />
                 <el-table-column prop="volume" label="一级返佣" align="center">
                   <template slot-scope="scope">
                     <el-input type="text" v-model="scope.row.brokerage"/>
@@ -377,7 +390,8 @@ export default {
           pink_stock: 0,
           pink_price: 0,
           weight: 0,
-          volume: 0
+          volume: 0,
+          integral:0
         }
       ],
       // 规格数据
@@ -394,78 +408,7 @@ export default {
         UEDITOR_HOME_URL: '/UEditor/',
         serverUrl: ''
       },
-      columns2: [
-        {
-          title: '图片',
-          slot: 'pic',
-          align: 'center',
-          minWidth: 80
-        },
-        {
-          title: '售价',
-          slot: 'price',
-          align: 'center',
-          minWidth: 95
-        },
-        {
-          title: '成本价',
-          slot: 'cost',
-          align: 'center',
-          minWidth: 95
-        },
-        {
-          title: '原价',
-          slot: 'ot_price',
-          align: 'center',
-          minWidth: 95
-        },
-        {
-          title: '库存',
-          slot: 'stock',
-          align: 'center',
-          minWidth: 95
-        },
-        {
-          title: '商品编号',
-          slot: 'bar_code',
-          align: 'center',
-          minWidth: 120
-        },
-        {
-          title: '重量（KG）',
-          slot: 'weight',
-          align: 'center',
-          minWidth: 95
-        },
-        {
-          title: '体积(m³)',
-          slot: 'volume',
-          align: 'center',
-          minWidth: 95
-        },
-        {
-          title: '操作',
-          slot: 'action',
-          fixed: 'right',
-          align: 'center',
-          minWidth: 140
-        }
-      ],
       columns: [],
-      gridPic: {
-        xl: 6,
-        lg: 8,
-        md: 12,
-        sm: 12,
-        xs: 12
-      },
-      gridBtn: {
-        xl: 4,
-        lg: 8,
-        md: 8,
-        sm: 8,
-        xs: 8
-      },
       formValidate: {
         imageArr:[],
         sliderImageArr: [],
@@ -488,6 +431,7 @@ export default {
         is_good: 0,
         is_postage: 0,
         is_sub: 0,
+        is_integral: 0,
         id: 0,
         spec_type: 0,
         temp_id: '',
@@ -499,7 +443,8 @@ export default {
             cost: 0,
             ot_price: 0,
             stock: 0,
-            bar_code: ''
+            bar_code: '',
+            integral:0
           }
         ],
         header: [],
@@ -527,7 +472,8 @@ export default {
           weight: 0,
           volume: 0,
           brokerage: 0,
-          brokerage_two: 0
+          brokerage_two: 0,
+          integral: 0
         }
       ],
       images: [],
@@ -572,9 +518,11 @@ export default {
     }
   },
   watch: {
-    'form.imageArr': function(val) {
+    'formValidate.image': function(val) {
+      console.log('aaaa:'+val)
       if (val) {
-        this.form.image = val.join(',')
+        this.oneFormValidate[0].pic = val
+        console.log('bbbbbb:'+this.oneFormValidate.pic)
       }
     },
     'form.sliderImageArr': function(val) {
@@ -745,7 +693,8 @@ export default {
                 weight:0,
                 volume:0,
                 brokerage:0,
-                brokerage_two:0
+                brokerage_two:0,
+                integral:0
               }
             ]
           }
@@ -845,34 +794,34 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-  .submission
-    margin-left 10px;
-  .color-list .tip{
-    color: #c9c9c9;
-  }
-  .color-list .color-item{
-    height: 30px;
-    line-height: 30px;
-    padding: 0 10px;
-    color:#fff;
-    margin-right :10px;
-  }
-  .color-list .color-item.blue{
-    background-color: #1E9FFF;
-  }
-  .color-list .color-item.yellow{
-    background-color: rgb(254, 185, 0);
-  }
-  .color-list .color-item.green{
-    background-color: #009688;
-  }
-  .columnsBox
-    margin-right 10px
-  .priceBox
-    width 100%
-  .rulesBox
-    display flex
-    flex-wrap: wrap;
-  .curs
-    cursor pointer
+.submission
+  margin-left 10px;
+.color-list .tip{
+  color: #c9c9c9;
+}
+.color-list .color-item{
+  height: 30px;
+  line-height: 30px;
+  padding: 0 10px;
+  color:#fff;
+  margin-right :10px;
+}
+.color-list .color-item.blue{
+  background-color: #1E9FFF;
+}
+.color-list .color-item.yellow{
+  background-color: rgb(254, 185, 0);
+}
+.color-list .color-item.green{
+  background-color: #009688;
+}
+.columnsBox
+  margin-right 10px
+.priceBox
+  width 100%
+.rulesBox
+  display flex
+  flex-wrap: wrap;
+.curs
+  cursor pointer
 </style>

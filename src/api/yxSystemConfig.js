@@ -25,7 +25,7 @@ export function edit(data) {
 
 export function get() {
   return request({
-    url: 'mall/yxSystemConfig?size=50',
+    url: 'mall/yxSystemConfig?size=500',
     method: 'get'
   })
 }
