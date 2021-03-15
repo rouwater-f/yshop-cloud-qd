@@ -28,6 +28,7 @@
           :width="150"
           :height="150"
         />
+      </el-form-item>
       <el-form-item label="微信分享标题">
         <el-input v-model="form.wechat_share_title" style="width: 370px;" />
       </el-form-item>
