@@ -130,9 +130,9 @@ export default {
           code: this.loginForm.code,
           uuid: this.loginForm.uuid
         }
-        if (user.password !== this.cookiePass) {
+        /*if (user.password !== this.cookiePass) {
           user.password = encrypt(user.password)
-        }
+        }*/
         if (valid) {
           this.loading = true
           if (user.rememberMe) {
