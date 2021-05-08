@@ -9,7 +9,7 @@ import errorCode from '@/utils/errorCode'
 // 创建axios实例
 const service = axios.create({
   baseURL: process.env.NODE_ENV === 'production' ? process.env.VUE_APP_BASE_API : process.env.VUE_APP_ENV_URL, // api 的 base_url
-  //baseURL: process.env.VUE_APP_ENV_URL,
+  // baseURL: process.env.VUE_APP_ENV_URL,
   timeout: Config.timeout // 请求超时时间
 })
 
@@ -39,8 +39,8 @@ service.interceptors.response.use(
       })
       return Promise.reject('error')
     } else {
-      console.log('a:'+response.data.code)
-      const data_code = response.data.code || 200;
+      console.log('a:' + response.data.code)
+      const data_code = response.data.code || 200
       const msg = errorCode[data_code] || response.data.msg || errorCode['default']
       if (data_code === 401) {
         MessageBox.confirm(
@@ -70,12 +70,11 @@ service.interceptors.response.use(
         return response.data
       }
     }
-
   },
   error => {
     let code = 0
     try {
-      code = error.response.data.status
+      code = error.response.data.status || error.response.status
     } catch (e) {
       if (error.toString().indexOf('Error: timeout') !== -1) {
         Notification.error({
