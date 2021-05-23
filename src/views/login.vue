@@ -11,7 +11,7 @@
           <li>seata</li>
           <li>xxl-job</li>
           <li>oss</li>
-          <li>springCloudStream</li>
+          <li>SpringCloudStream</li>
           <li>rabbitMq</li>
           <li>MybatisPlus</li>
           <li>SpringSecurity+Oauth2</li>
