@@ -10,6 +10,9 @@
           <li>SpringCloud</li>
           <li>seata</li>
           <li>xxl-job</li>
+          <li>oss</li>
+          <li>springCloudStream</li>
+          <li>rabbitMq</li>
           <li>MybatisPlus</li>
           <li>SpringSecurity+Oauth2</li>
           <li>Jwt</li>
