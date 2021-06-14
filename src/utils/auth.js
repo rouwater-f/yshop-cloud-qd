@@ -3,13 +3,12 @@ import Config from '@/settings'
 
 const TokenKey = Config.TokenKey
 
-
 const RefreshTokenKey = Config.RefreshTokenKey
 
 const ExpiresInKey = Config.ExpiresInKey
 
 export function getToken() {
-  return Cookies.get(TokenKey)
+  return 'Bearer ' + Cookies.get(TokenKey)
 }
 
 export function setToken(token, rememberMe) {
