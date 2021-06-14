@@ -52,7 +52,7 @@ service.interceptors.response.use(
             type: 'warning'
           }
         ).then(() => {
-          store.dispatch('LogOut').then(() => {
+          store.dispatch('LogOutV2').finally(() => {
             location.reload() // 为了重新实例化vue-router对象 避免bug
           })
         })
@@ -95,7 +95,7 @@ service.interceptors.response.use(
             type: 'warning'
           }
         ).then(() => {
-          store.dispatch('LogOut').then(() => {
+          store.dispatch('LogOutV2').finally(() => {
             location.reload() // 为了重新实例化vue-router对象 避免bug
           })
         })

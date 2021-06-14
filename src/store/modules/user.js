@@ -1,5 +1,5 @@
 import { login, getInfo, logout } from '@/api/login'
-import { getToken, setToken, removeToken, getRefreshToken,setRefreshToken, setExpiresIn } from '@/utils/auth'
+import { getToken, setToken, removeToken, getRefreshToken, setRefreshToken, setExpiresIn } from '@/utils/auth'
 
 const user = {
   state: {
@@ -38,12 +38,11 @@ const user = {
       const rememberMe = userInfo.rememberMe
       return new Promise((resolve, reject) => {
         login(userInfo.username, userInfo.password, userInfo.code, userInfo.uuid).then(res => {
-
-         //console.log('v:'+res.access_token)
+          // console.log('v:'+res.access_token)
           setToken(res.access_token, rememberMe)
-          //setToken(res.access_token)
+          // setToken(res.access_token)
           commit('SET_TOKEN', res.access_token)
-          //setUserInfo(res.user, commit)
+          // setUserInfo(res.user, commit)
           // 第一次加载菜单时用到， 具体见 src 目录下的 permission.js
           setRefreshToken(res.refresh_token)
           commit('SET_REFRESH_TOKEN', res.refresh_token)
@@ -101,7 +100,13 @@ const user = {
         })
       })
     },
-
+    // 登出
+    LogOutV2({ commit }) {
+      return new Promise((resolve, reject) => {
+        logOut(commit)
+        resolve()
+      })
+    },
     updateLoadMenus({ commit }) {
       return new Promise((resolve, reject) => {
         commit('SET_LOAD_MENUS', false)
