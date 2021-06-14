@@ -29,7 +29,7 @@ export default {
     return {
       resourcesUrl: '',
       headers: {
-        'Authorization': getToken()
+        'Authorization': 'Bearer ' + getToken()
       }
     }
   },
