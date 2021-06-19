@@ -27,7 +27,7 @@ module.exports = {
    * @description token key
    */
   TokenKey: 'YSHOP-TOEKN',
-
+  TenantIdKey: 'YSHOP-TENANT-ID',
   RefreshTokenKey: 'YSHOP-Refresh-Token',
 
   ExpiresInKey: 'YSHOP-Expires-In',
