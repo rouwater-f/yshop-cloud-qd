@@ -33,7 +33,7 @@ router.beforeEach((to, from, next) => {
         }).catch((err) => {
           console.log(5555)
           console.log(err)
-          store.dispatch('LogOut').then(() => {
+          store.dispatch('LogOutV2').then(() => {
             location.reload() // 为了重新实例化vue-router对象 避免bug
           })
         })
