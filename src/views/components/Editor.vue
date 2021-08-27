@@ -7,7 +7,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import E from 'wangeditor'
-import { getToken } from '@/utils/auth'
+import { getToken, getTenantId } from '@/utils/auth'
 export default {
   name: 'Editor',
   model: {
@@ -23,7 +23,8 @@ export default {
   data() {
     return {
       headers: {
-        'Authorization': getToken()
+        'Authorization': getToken(),
+        'tenantId': getTenantId()
       },
       info: null,
       editor: null
