@@ -45,7 +45,7 @@ export default {
     }
   },
   mounted () {
-    this.fileUploadURL = process.env.VUE_APP_BASE_API +'/api/canvas/upload?name=demo&type=console'
+    this.fileUploadURL = process.env.VUE_APP_BASE_API +'/system/canvas/upload?name=demo&type=console'
   },
   methods: {
     handleAvatarSuccess (res, file) {
