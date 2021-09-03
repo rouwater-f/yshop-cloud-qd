@@ -4,6 +4,7 @@
       <el-upload
         drag
         :action="fileUploadURL"
+        :headers="{tenantId:tenantId}"
         :on-success="handleAvatarSuccess"
         :before-upload="beforeAvatarUpload"
         :show-file-list="false"
@@ -25,13 +26,16 @@
 </template>
 
 <script>
+import { getToken, getTenantId } from '@/utils/auth'
+
 export default {
   name: 'tool-single-img',
   data () {
     return {
       dialogVisible: false,
       dialogImageUrl: '',
-      fileUploadURL: ''
+      fileUploadURL: '',
+      tenantId: getTenantId()
     }
   },
   props: {
@@ -45,7 +49,7 @@ export default {
     }
   },
   mounted () {
-    this.fileUploadURL = process.env.VUE_APP_BASE_API +'/system/canvas/upload?name=demo&type=console'
+    this.fileUploadURL = process.env.VUE_APP_BASE_API +'/system/upload?name=demo&type=console'
   },
   methods: {
     handleAvatarSuccess (res, file) {
