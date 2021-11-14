@@ -99,7 +99,7 @@
         </el-table-column>
 
         <el-table-column
-          v-permission="['admin','yzCustomer:edit','yzCustomer:del']"
+          v-permission="['admin','yxStoreCustomer:edit','yxStoreCustomer:del']"
           label="操作"
           width="150px"
           align="center"
@@ -116,7 +116,7 @@
 </template>
 
 <script>
-import crudYzCustomer from "@/api/yxStoreCustomer";
+import crudStoreCustomer from "@/api/yxStoreCustomer";
 import CRUD, { presenter, header, form, crud } from "@crud/crud";
 import rrOperation from "@crud/RR.operation";
 import crudOperation from "@crud/CRUD.operation";
@@ -129,7 +129,7 @@ const defaultCrud = CRUD({
   title: "消息通知",
   url: "mall/yxStoreCustomer",
   sort: "id,desc",
-  crudMethod: { ...crudYzCustomer }
+  crudMethod: { ...crudStoreCustomer }
 });
 const defaultForm = {
   id: null,
@@ -150,9 +150,9 @@ export default {
       src: "",
       gzhsrc: "",
       permission: {
-        add: ["admin", "yzCustomer:add"],
-        edit: ["admin", "yzCustomer:edit"],
-        del: ["admin", "yzCustomer:del"]
+        add: ["admin", "yxStoreCustomer:add"],
+        edit: ["admin", "yxStoreCustomer:edit"],
+        del: ["admin", "yxStoreCustomer:del"]
       },
       rules: {}
     };
@@ -172,9 +172,9 @@ export default {
     [CRUD.HOOK.beforeToAdd]() {
       this.randomStr = RandomNumber();
       this.src =
-        process.env.VUE_APP_BASE_API + "/api/wxmp/qrcode?key=" + this.randomStr;
+        process.env.VUE_APP_BASE_API + "/weixin/wxmp/qrcode?key=" + this.randomStr;
       this.setIntervaltimer();
-      crudYzCustomer.getwechatCode()
+      crudStoreCustomer.getwechatCode()
         //getOpenId("FK14YV17TURrFdyWG4")
         .then(res => {
           if (res != "") {
@@ -194,7 +194,7 @@ export default {
     [CRUD.HOOK.beforeToCU]() {
       this.randomStr = RandomNumber();
       this.src =
-        process.env.VUE_APP_BASE_API + "/mall/wxmp/qrcode?key=" + this.randomStr;
+        process.env.VUE_APP_BASE_API + "/weixin/wxmp/qrcode?key=" + this.randomStr;
       this.setIntervaltimer();
       return true;
     },
@@ -221,7 +221,7 @@ export default {
         this.timer = null;
       }
       this.timer = setInterval(() => {
-        crudYzCustomer.getOpenId(this.randomStr)
+        crudStoreCustomer.getOpenId(this.randomStr)
           //getOpenId("FK14YV17TURrFdyWG4")
           .then(res => {
             if (res != "") {
