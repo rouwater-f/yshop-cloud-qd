@@ -16,6 +16,7 @@
         </i>
       </el-upload>
       <div class="overlay" v-if="imageUrl">
+        <!-- <i class="iconfont icon-chakan" @click="showImage"></i>
         <i class="iconfont icon-shanchu1" @click="delImage"></i> -->
       </div>
     </div>
