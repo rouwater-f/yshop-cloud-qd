@@ -736,7 +736,7 @@ export default {
               type: 'success'
             });
             setTimeout(() => {
-              this.$router.push({ path: '/shop/goods' });
+              this.$router.push({ path: '/managerShop/shop/goods' });
             }, 500);
           }).catch(res => {
             // this.$message({
