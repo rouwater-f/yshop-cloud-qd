@@ -45,7 +45,7 @@
         <el-table-column v-if="columns.visible('id')" prop="id" label="id" />
         <el-table-column v-if="columns.visible('tenantName')" prop="tenantName" label="租户名称" />
         <el-table-column v-if="columns.visible('tenantCode')" prop="tenantCode" label="租户代码" />
-        <el-table-column v-if="columns.visible('userName')" prop="tenantCode" label="租户账号" />
+        <el-table-column v-if="columns.visible('userName')" prop="userName" label="租户账号" />
         <el-table-column v-if="columns.visible('remark')" prop="remark" label="描述" />
         <el-table-column v-if="columns.visible('createTime')" prop="createTime" label="创建日期">
           <template slot-scope="scope">
