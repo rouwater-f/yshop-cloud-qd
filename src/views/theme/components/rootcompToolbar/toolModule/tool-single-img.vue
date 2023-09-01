@@ -16,8 +16,8 @@
         </i>
       </el-upload>
       <div class="overlay" v-if="imageUrl">
-        <!-- <i class="iconfont icon-chakan" @click="showImage"></i>
-        <i class="iconfont icon-shanchu1" @click="delImage"></i> -->
+        <i class="iconfont icon-chakan" @click="showImage"></i>
+        <i class="iconfont icon-shanchu1" @click="delImage"></i>
       </div>
     </div>
     <el-dialog title="图片展示" :visible.sync="dialogVisible">
@@ -50,7 +50,7 @@ export default {
     }
   },
   mounted () {
-    this.fileUploadURL = process.env.VUE_APP_BASE_API +'/system/upload?name=demo&type=console'
+    this.fileUploadURL = process.env.VUE_APP_BASE_API +'/system/upload/upload'
   },
   methods: {
     handleAvatarSuccess (res, file) {
