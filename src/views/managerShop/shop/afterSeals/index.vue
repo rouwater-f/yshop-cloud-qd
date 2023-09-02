@@ -54,7 +54,7 @@
     </div>
     <!--如果想在工具栏加入更多按钮，可以使用插槽方式， slot = 'left' or 'right'-->
     <!-- <crudOperation :permission="permission" /> -->
-    
+
     <!--表格渲染-->
     <el-table
     ref="table"
@@ -190,11 +190,11 @@ export default {
   },
   methods: {
     beforeInit() {
-      this.url = 'api/yxStoreAfterSales/sales/List'
+      this.url = 'mall/yxStoreAfterSales/sales/List'
       this.params = {
         page: this.page,
         size: this.size,
-        
+
         serviceType: this.query.type || '', // 查询类型
         salesState: this.query.salesState || 0, // 售后状态
         state: this.query.state,
