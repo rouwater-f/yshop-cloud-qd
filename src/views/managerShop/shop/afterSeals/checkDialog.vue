@@ -25,11 +25,11 @@
             <b>用户未上传图片</b>
           </div>
           <div v-else>
-            <el-image 
+            <el-image
               v-for="(item,index) in checkForm.explainImg.split(',')"
               :key="index"
               style="width: 100px; height: 100px"
-              :src="item" 
+              :src="item"
               :preview-src-list="[item]">
             </el-image>
           </div>
@@ -63,6 +63,18 @@
           <el-form-item label="邮费：">
             <el-input v-model="item.productInfo.postage" disabled />
           </el-form-item>
+          <el-form-item v-if="checkForm.deliveryName" label="快递公司：">
+            <el-input v-model="checkForm.deliveryName" disabled />
+          </el-form-item>
+          <el-form-item v-if="checkForm.deliverySn" label="快递单号：">
+            <el-input v-model="checkForm.deliverySn" disabled />
+          </el-form-item>
+          <el-form-item v-if="checkForm.deliveryTime" label="发货时间：">
+            <el-input v-model="checkForm.deliveryTime" disabled />
+          </el-form-item>
+          <el-form-item v-if="checkForm.deliverySn" label="订单跟踪：">
+            <el-button size="mini" @click="showLogisticsDialog">订单跟踪</el-button>
+          </el-form-item>
         </div>
       </el-form>
     </div>
@@ -83,6 +95,19 @@
         </el-form-item>
       </el-form>
     </div>
+    <el-dialog title="订单跟踪"
+               :visible.sync="kuaidiDialogVisible"
+               width="40%">
+      <el-steps direction="vertical"
+                :active="90"
+                finish-status="success"
+                space="50px">
+        <el-step  v-for="item in logisticsList"
+                  :key="item.AcceptStation"
+                  :title="item.AcceptStation"
+                  :description="item.AcceptTime"></el-step>
+      </el-steps>
+    </el-dialog>
     <div slot="footer" class="dialog-footer">
       <el-button class="refuse" type="danger" v-if="isShow" :loading="loading" @click="submit(1)">拒绝</el-button>
       <el-button class="check" type="primary" v-if="isShow" :loading="loading" @click="submit(0)">确认</el-button>
@@ -92,6 +117,7 @@
 
 <script>
 import {salesCheck} from '@/api/yxStoreAfterSales.js'
+import { express } from '@/api/yxStoreOrder'
 export default {
   props: {
   },
@@ -100,7 +126,9 @@ export default {
       visible: false,
       isShow: false,
       loading: false,
+      kuaidiDialogVisible: false,
       serviceType: '',
+      logisticsList:[],
       checkForm: {},
       form: {
         salesId: '', // 售后id
@@ -121,6 +149,24 @@ export default {
     cancel() {
       this.visible = false
       this.$refs['form'].resetFields()
+    },
+    showLogisticsDialog(){
+      this.express();
+    },
+    express() {
+      let params ={
+        "orderCode": this.checkForm.id,
+        "shipperCode": this.checkForm.deliverySn,
+        "logisticCode": this.checkForm.deliveryId
+      }
+
+      express(params).then(res=>{
+        this.expressInfo = res.Traces
+        this.kuaidiDialogVisible = true;
+        this.logisticsList = this.expressInfo
+      }).catch(err => {
+      })
+
     },
     async submit(type) {
       this.loading = true

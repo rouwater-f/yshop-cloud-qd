@@ -126,16 +126,16 @@
                 >
                   订单核销</el-button>
               </el-dropdown-item>
-              <el-dropdown-item>
-                <el-button
-                  v-if="scope.row._status == 3"
-                  v-permission="['admin','YXSTOREORDER_ALL','YXSTOREORDER_EDIT']"
-                  size="mini"
-                  type="primary"
-                  @click="refund(scope.row)"
-                >
-                  立刻退款</el-button>
-              </el-dropdown-item>
+<!--              <el-dropdown-item>-->
+<!--                <el-button-->
+<!--                  v-if="scope.row._status == 3"-->
+<!--                  v-permission="['admin','YXSTOREORDER_ALL','YXSTOREORDER_EDIT']"-->
+<!--                  size="mini"-->
+<!--                  type="primary"-->
+<!--                  @click="refund(scope.row)"-->
+<!--                >-->
+<!--                  立刻退款</el-button>-->
+<!--              </el-dropdown-item>-->
               <el-dropdown-item v-if="scope.row._status == 1">
                 <el-button
                   v-permission="['admin','YXSTOREORDER_ALL','YXSTOREORDER_EDIT']"

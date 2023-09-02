@@ -24,7 +24,7 @@
           <el-button size="mini" @click="remark(order)">备注订单</el-button>
         </div>
         <div class="operate-button-container" v-show="order._status===3">
-          <el-button size="mini" @click="refund(order)">立即退款</el-button>
+<!--          <el-button size="mini" @click="refund(order)">立即退款</el-button>-->
           <el-button size="mini" @click="remark(order)">备注订单</el-button>
         </div>
         <div class="operate-button-container" v-show="order._status===2">
