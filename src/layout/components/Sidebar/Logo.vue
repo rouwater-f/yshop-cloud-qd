@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import Logo from '@/assets/images/logo.png'
+import Logo from '@/assets/images/logo.jpeg'
 export default {
   name: 'SidebarLogo',
   props: {
@@ -25,7 +25,7 @@ export default {
   },
   data() {
     return {
-      title: 'YSHOP-CLOUD-v1.4.1',
+      title: '柔水精选（X）',
       logo: Logo
     }
   }
@@ -55,7 +55,7 @@ export default {
     width: 100%;
 
     & .sidebar-logo {
-      width: 32px;
+      width: 42px;
       height: 32px;
       vertical-align: middle;
       margin-right: 6px;

@@ -1,33 +1,9 @@
 <template>
   <div class="login">
     <div style="display:flex;justify-content:space-between;align-items: center;">
-      <div style="padding: 0 60px 0 0">
-        <h3 style="color: #ffffff;font-size: 24px;padding: 0;margin-bottom: 10px">
-          YSHOP单商户B2C电商系统
-        </h3>
-        <ul style="margin: 0;color: #ffffff;font-size: 15px;line-height: 25px;padding-left: 20px">
-          <li>SaaS多租户</li>
-          <li>SpringCloudAlibaba</li>
-          <li>SpringCloud</li>
-          <li>seata</li>
-          <li>nacos</li>
-          <li>xxl-job</li>
-          <li>oss</li>
-          <li>SpringCloudStream</li>
-          <li>rabbitMq</li>
-          <li>MybatisPlus</li>
-          <li>SpringSecurity+Oauth2</li>
-          <li>Jwt</li>
-          <li>Redis</li>
-          <li>Vue</li>
-        </ul>
-        <h3 style="color: #ffffff;">
-          官网:https://www.yixiang.co
-        </h3>
-      </div>
       <el-form ref="loginForm" :model="loginForm" :rules="loginRules" label-position="left" label-width="0px" class="login-form">
         <h3 class="title">
-          YSHOP-CLOUD后台管理系统-v1.4.1
+          柔水精选（X）后台管理系统-v1.4.1
         </h3>
         <el-form-item prop="username">
           <el-input v-model="loginForm.username" type="text" auto-complete="off" placeholder="账号">
