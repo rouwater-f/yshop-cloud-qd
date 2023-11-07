@@ -117,7 +117,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import { getToken } from '@/utils/auth'
+import { getToken, getTenantId } from '@/utils/auth'
 import crudFile from '@/api/tools/localStorage'
 import CRUD, { presenter, header, form, crud } from '@crud/crud'
 import rrOperation from '@crud/RR.operation'
@@ -134,7 +134,7 @@ export default {
     return {
       delAllLoading: false,
       loading: false,
-      headers: { 'Authorization': getToken() },
+      headers: { 'Authorization': getToken(), 'tenantId': getTenantId() },
       permission: {
         edit: ['admin', 'storage:edit'],
         del: ['admin', 'storage:del']
