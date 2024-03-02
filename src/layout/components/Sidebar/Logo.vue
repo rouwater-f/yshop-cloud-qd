@@ -25,7 +25,7 @@ export default {
   },
   data() {
     return {
-      title: '柔水精选（X）',
+      title: '福婺侬',
       logo: Logo
     }
   }

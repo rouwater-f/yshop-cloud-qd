@@ -3,7 +3,7 @@
     <div style="display:flex;justify-content:space-between;align-items: center;">
       <el-form ref="loginForm" :model="loginForm" :rules="loginRules" label-position="left" label-width="0px" class="login-form">
         <h3 class="title">
-          柔水精选（X）后台管理系统-v1.4.1
+          福婺侬后台管理系统-v1.4.1
         </h3>
         <el-form-item prop="username">
           <el-input v-model="loginForm.username" type="text" auto-complete="off" placeholder="账号">
