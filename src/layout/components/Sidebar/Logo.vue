@@ -25,7 +25,7 @@ export default {
   },
   data() {
     return {
-      title: '福婺侬',
+      title: '小云福利平台',
       logo: Logo
     }
   }

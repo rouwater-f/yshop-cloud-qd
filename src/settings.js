@@ -2,7 +2,7 @@ module.exports = {
   /**
    * @description 网站标题
    */
-  title: '福婺侬',
+  title: '小云福利平台',
   /**
    * @description 是否显示 tagsView
    */

@@ -24,6 +24,14 @@ export function del(ids) {
   })
 }
 
+export function edit(data) {
+  return request({
+    url: 'system/dept',
+    method: 'put',
+    data
+  })
+}
+
 export function getDeptSuperior(data) {
   return request({
     url: 'system/dept',
@@ -31,4 +39,4 @@ export function getDeptSuperior(data) {
     data
   })
 }
-export default { add, del, getDepts, getDeptSuperior }
+export default { add, del, edit, getDepts, getDeptSuperior }
