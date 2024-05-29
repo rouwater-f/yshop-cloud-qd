@@ -16,10 +16,15 @@
               width="180">
             </el-table-column>
             <el-table-column
+              prop="phone"
+              label="手机号"
+              width="180">
+            </el-table-column>
+            <el-table-column
               prop="avatar"
               label="头像">
               <template slot-scope="scope">
-                <a :href="scope.row.avatar" style="color: #42b983" target="_blank"><img :src="scope.row.avatar" alt="点击打开" class="el-avatar"></a>
+                <a :href="scope.row.avatar" style="color: #42b983" target="_blank"><img v-if="scope.row.avatar != null" :src="scope.row.avatar" alt="点击打开" class="el-avatar"></a>
               </template>
             </el-table-column>
             <el-table-column
@@ -40,10 +45,15 @@
               width="180">
             </el-table-column>
             <el-table-column
+              prop="phone"
+              label="手机号"
+              width="180">
+            </el-table-column>
+            <el-table-column
               prop="avatar"
               label="头像">
               <template slot-scope="scope">
-                <a :href="scope.row.avatar" style="color: #42b983" target="_blank"><img :src="scope.row.avatar" alt="点击打开" class="el-avatar"></a>
+                <a :href="scope.row.avatar" style="color: #42b983" target="_blank"><img v-if="scope.row.avatar != null" :src="scope.row.avatar" alt="点击打开" class="el-avatar"></a>
               </template>
             </el-table-column>
             <el-table-column
