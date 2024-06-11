@@ -260,9 +260,9 @@
                 finish-status="success"
                 space="50px">
         <el-step  v-for="item in logisticsList"
-                  :key="item.acceptStation"
-                  :title="item.acceptStation"
-                  :description="item.acceptTime"></el-step>
+                  :key="item.AcceptStation"
+                  :title="item.AcceptStation"
+                  :description="item.AcceptTime"></el-step>
       </el-steps>
     </el-dialog>
     <!--    <el-dialog title="修改收货人信息"-->

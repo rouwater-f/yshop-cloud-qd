@@ -126,6 +126,7 @@ export default {
       delLoading: false,
       userType: '',
       queryTypeOptions: [
+        { key: 'uid', display_name: '用户 ID' },
         { key: 'nickname', display_name: '用户昵称' },
         { key: 'phone', display_name: '手机号码' }
       ],
