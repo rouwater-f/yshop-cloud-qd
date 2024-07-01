@@ -28,6 +28,8 @@ export default {
       params: {},
       // 待查询的对象
       query: {},
+      // 请求配置
+      config: {},
       // 等待时间
       time: 50,
       // 是否为新增类型的表单
@@ -60,7 +62,7 @@ export default {
       return new Promise((resolve, reject) => {
         this.loading = true
         // 请求数据
-        initData(this.url, this.getQueryParame()).then(data => {
+        initData(this.url, this.getQueryParame(), this.getQueryConfig()).then(data => {
           this.cateList = data.cateList
           this.total = data.totalElements
           this.data = data.content
@@ -85,6 +87,11 @@ export default {
         sort: this.sort,
         ...this.query,
         ...this.params
+      }
+    },
+    getQueryConfig: function() {
+      return {
+        ...this.config
       }
     },
     // 改变页码
