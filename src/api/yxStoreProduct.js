@@ -23,6 +23,14 @@ export function edit(data) {
   })
 }
 
+export function copy(data) {
+  return request({
+    url: 'mall/yxStoreProduct/copy',
+    method: 'post',
+    data
+  })
+}
+
 export function onsale(id, data) {
   return request({
     url: 'mall/yxStoreProduct/onsale/' + id,
