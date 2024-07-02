@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function add(data) {
   return request({
-    url: 'mall-debug/yxUser',
+    url: 'mall/yxUser',
     method: 'post',
     data
   })
@@ -10,14 +10,14 @@ export function add(data) {
 
 export function del(uid) {
   return request({
-    url: 'mall-debug/yxUser/' + uid,
+    url: 'mall/yxUser/' + uid,
     method: 'delete'
   })
 }
 
 export function edit(data) {
   return request({
-    url: 'mall-debug/yxUser',
+    url: 'mall/yxUser',
     method: 'put',
     data
   })
@@ -25,7 +25,7 @@ export function edit(data) {
 
 export function onStatus(id, data) {
   return request({
-    url: 'mall-debug/yxUser/onStatus/' + id,
+    url: 'mall/yxUser/onStatus/' + id,
     method: 'post',
     data
   })
@@ -33,7 +33,7 @@ export function onStatus(id, data) {
 
 export function editp(data) {
   return request({
-    url: 'mall-debug/yxUser/money',
+    url: 'mall/yxUser/money',
     method: 'post',
     data
   })
@@ -41,7 +41,7 @@ export function editp(data) {
 
 export function getSpread(data) {
   return request({
-    url: 'mall-debug/yxUser/spread',
+    url: 'mall/yxUser/spread',
     method: 'post',
     data
   })

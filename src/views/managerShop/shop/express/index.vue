@@ -73,7 +73,7 @@ export default {
   methods: {
     checkPermission,
     beforeInit() {
-      this.url = 'mall-debug/yxExpress'
+      this.url = 'mall/yxExpress'
       const sort = 'id,desc'
       this.params = { page: this.page, size: this.size, sort: sort }
       return true

@@ -575,7 +575,9 @@ export default {
     },
     // 立即生成
     generate () {
-      isFormatAttr(this.formValidate.id, { attrs: this.attrs }).then(res => {
+      let that = this;
+      let tenantId = that.$route.params.tenantId || '0000';
+      isFormatAttr(this.formValidate.id, { attrs: this.attrs }, { bypassTenantId: true, tenantId: tenantId}).then(res => {
         this.manyFormValidate = res.value;
         let headerdel = {
           title: '操作',
@@ -719,6 +721,8 @@ export default {
 
     // 提交
     handleSubmit (name) {
+      let that = this;
+      let tenantId = that.$route.params.tenantId || '0000';
       this.$refs[name].validate((valid) => {
         if (valid) {
           if(this.formValidate.spec_type ===0 ){
@@ -732,13 +736,13 @@ export default {
           if(this.formValidate.spec_type === 1 && this.manyFormValidate.length===0){
             return this.$message.warning('请点击生成规格！');
           }
-          add(this.formValidate).then(async res => {
+          add(this.formValidate, { bypassTenantId: true, tenantId: tenantId}).then(async res => {
             this.$message({
               message:'操作成功',
               type: 'success'
             });
             setTimeout(() => {
-              this.$router.push({ path: '/managerShop/shop/goods' });
+              this.$router.push({ path: '/managerShop/shop/superGoods' });
             }, 500);
           }).catch(res => {
             // this.$message({
