@@ -399,7 +399,7 @@ export default {
   },
   mounted () {
     this.getInfo(),
-      initData('mall-debug/yxSystemGroupData',{ groupName: 'yshop_seckill_time' }).then(res => {
+      initData('mall/yxSystemGroupData',{ groupName: 'yshop_seckill_time' }).then(res => {
         this.myTimes = res.content
       })
   },

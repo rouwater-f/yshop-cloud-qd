@@ -47,7 +47,7 @@ import MaterialList from "@/components/material"
 import add from './form'
 
 // crud交由presenter持有
-const defaultCrud = CRUD({ title: 'sku规则', url: 'mall-debug/yxStoreProductRule', sort: 'id,desc', crudMethod: { ...crudYxStoreProductRule }})
+const defaultCrud = CRUD({ title: 'sku规则', url: 'mall/yxStoreProductRule', sort: 'id,desc', crudMethod: { ...crudYxStoreProductRule }})
 const defaultForm = { id: null, ruleName: null, ruleValue: null, createTime: null, updateTime: null, isDel: null }
 export default {
   name: 'YxStoreProductRule',

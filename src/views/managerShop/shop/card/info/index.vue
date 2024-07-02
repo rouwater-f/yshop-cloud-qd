@@ -116,7 +116,7 @@ import pagination from '@crud/Pagination'
 import MaterialList from "@/components/material";
 
 // crud交由presenter持有
-const defaultCrud = CRUD({ title: 'card', url: 'mall-debug/yxCardInfo', sort: 'id,desc', crudMethod: { ...crudYxCardInfo }})
+const defaultCrud = CRUD({ title: 'card', url: 'mall/yxCardInfo', sort: 'id,desc', crudMethod: { ...crudYxCardInfo }})
 const defaultForm = { cardCode: null, cardName: null, categoryId: null, isActive: null, createTime: null, expiryDate: null, usedByUserId: null, tenantId: null, id: null, balance: null }
 export default {
   name: 'YxCardInfo',

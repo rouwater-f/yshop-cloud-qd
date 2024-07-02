@@ -71,7 +71,7 @@
             type="primary"
             icon="el-icon-edit"
           >
-          <router-link :to="'/managerShop/shop/goodsEdit/'+scope.row.id">
+          <router-link :to="'/managerShop/shop/superGoodsEdit/'+scope.row.id + '/' + tenantId">
             编辑
           </router-link>
           </el-button>
@@ -81,9 +81,15 @@
             width="180"
           >
             <p>确定复制本条数据吗？</p>
+            <el-input
+                v-model="tenantIdInput"
+                placeholder="请目标租户ID"
+                size="mini"
+                style="margin-bottom: 10px;"
+            ></el-input>
             <div style="text-align: right; margin: 0">
               <el-button size="mini" type="text" @click="$refs[scope.row.id].doClose()">取消</el-button>
-              <el-button :loading="cpLoading" type="primary" size="mini" @click="productCopy(scope.row.id, '0000')">确定</el-button>
+              <el-button :loading="cpLoading" type="primary" size="mini" @click="productCopy(scope.row.id, tenantIdInput)">确定</el-button>
             </div>
             <el-button slot="reference" type="primary" icon="el-icon-document-copy" size="mini">复制</el-button>
           </el-popover>
@@ -136,7 +142,8 @@ export default {
       ],
       isAttr: false,
       cateId: null,
-      tenantId: 'F0001'
+      tenantId: 'F0001',
+      tenantIdInput: ''
     }
   },
   created() {
@@ -161,7 +168,7 @@ export default {
     },
     checkPermission,
     beforeInit() {
-      this.url = 'mall-debug/yxStoreProduct'
+      this.url = 'mall/yxStoreProduct'
       const sort = 'id,desc'
       this.params = { page: this.page, size: this.size, sort: sort, isShow: 1, isDel: 0,cateId: this.cateId }
       this.config = { bypassTenantId: true, tenantId: this.tenantId}
@@ -190,7 +197,7 @@ export default {
     },
     subDelete(id) {
       this.delLoading = true
-      del(id).then(res => {
+      del(id, { bypassTenantId: true, tenantId: this.tenantId}).then(res => {
         this.delLoading = false
         this.$refs[id].doClose()
         this.dleChangePage()
@@ -213,7 +220,7 @@ export default {
         type: 'warning'
       })
         .then(() => {
-          onsale(id, { status: status }).then(({ data }) => {
+          onsale(id, { status: status },{bypassTenantId: true, tenantId: this.tenantId} ).then(({ data }) => {
             this.$message({
               message: '操作成功',
               type: 'success',

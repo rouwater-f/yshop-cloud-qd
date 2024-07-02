@@ -106,7 +106,7 @@ export default {
     formatTime,
     checkPermission,
     beforeInit() {
-      this.url = 'mall-debug/yxStoreProductReply'
+      this.url = 'mall/yxStoreProductReply'
       const sort = 'id,desc'
       this.params = { page: this.page, size: this.size, sort: sort }
       return true

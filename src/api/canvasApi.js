@@ -4,7 +4,7 @@ import request from '@/utils/request'
 export function getCanvasData(params) {
   // console.log(qs.stringify(params, { indices: false }))
   return request({
-    url: 'mall-debug/canvas/getCanvas',
+    url: 'mall/canvas/getCanvas',
     method: 'get',
     params
   })
@@ -13,7 +13,7 @@ export function getCanvasData(params) {
 // 保存画布
 export function saveCanvasData(data) {
   return request({
-    url: 'mall-debug/canvas/saveCanvas',
+    url: 'mall/canvas/saveCanvas',
     method: 'post',
     data
   })
@@ -30,7 +30,7 @@ export function uploadCanvas() {
 // 查询分类层级
 export function getClassify() {
   return request({
-    url: 'mall-debug/canvas/getClassify',
+    url: 'mall/canvas/getClassify',
     method: 'get'
   })
 }
@@ -38,7 +38,7 @@ export function getClassify() {
 // 选择商品查询
 export function getProducts(params) {
   return request({
-    url: 'mall-debug/canvas/getProducts',
+    url: 'mall/canvas/getProducts',
     methods: 'get',
     params
   })
@@ -47,7 +47,7 @@ export function getProducts(params) {
 // 选择店铺查询
 export function getShops(params) {
   return request({
-    url: 'mall-debug/canvas/getShops',
+    url: 'mall/canvas/getShops',
     method: 'get',
     params
   })

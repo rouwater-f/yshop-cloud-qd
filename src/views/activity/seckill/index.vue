@@ -111,7 +111,7 @@ export default {
     formatTimeTwo,
     checkPermission,
     beforeInit() {
-      this.url = 'mall-debug/yxStoreSeckill'
+      this.url = 'mall/yxStoreSeckill'
       const sort = 'id,desc'
       this.params = { page: this.page, size: this.size, sort: sort }
       const query = this.query

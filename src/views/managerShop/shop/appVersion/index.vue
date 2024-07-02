@@ -81,7 +81,7 @@ import MaterialList from "@/components/material";
 // crud交由presenter持有
 const defaultCrud = CRUD({
   title: 'app版本控制',
-  url: 'mall-debug/yxAppVersion',
+  url: 'mall/yxAppVersion',
   sort: 'id,desc',
   crudMethod: {...crudYxAppVersion}
 })

@@ -13,6 +13,7 @@
                    :key="item.id"
                    :label="item.label"></el-option>
       </el-select>
+      <el-input v-model="tenantId" clearable placeholder="输入租户 ID" style="width: 200px;" class="filter-item" @keyup.enter.native="toQuery" />
       <el-button class="filter-item" size="mini" type="success" icon="el-icon-search" @click="toQuery">搜索</el-button>
       <!-- 新增 -->
       <el-button
@@ -45,13 +46,31 @@
           </div>
         </template>
       </el-table-column>
-      <el-table-column v-if="checkPermission(['admin','YXSTOREPRODUCT_ALL','YXSTOREPRODUCT_EDIT','YXSTOREPRODUCT_DELETE'])" label="操作" width="150px" align="center">
+      <el-table-column v-if="checkPermission(['admin','YXSTOREPRODUCT_ALL','YXSTOREPRODUCT_EDIT','YXSTOREPRODUCT_DELETE'])" label="操作" width="265px" align="center">
         <template slot-scope="scope">
           <el-button v-permission="['admin','YXSTOREPRODUCT_ALL','YXSTOREPRODUCT_EDIT']" size="mini" type="primary" icon="el-icon-edit">
             <router-link :to="'/managerShop/shop/goodsEdit/'+scope.row.id">
               编辑
             </router-link>
           </el-button>
+          <el-popover
+            :ref="scope.row.id"
+            placement="top"
+            width="180"
+          >
+            <p>确定复制本条数据吗？</p>
+            <el-input
+              v-model="tenantIdInput"
+              placeholder="请目标租户ID"
+              size="mini"
+              style="margin-bottom: 10px;"
+            ></el-input>
+            <div style="text-align: right; margin: 0">
+              <el-button size="mini" type="text" @click="$refs[scope.row.id].doClose()">取消</el-button>
+              <el-button :loading="cpLoading" type="primary" size="mini" @click="productCopy(scope.row.id, tenantIdInput)">确定</el-button>
+            </div>
+            <el-button slot="reference" type="primary" icon="el-icon-document-copy" size="mini">复制</el-button>
+          </el-popover>
           <el-popover
             :ref="scope.row.id"
             v-permission="['admin','YXSTOREPRODUCT_ALL','YXSTOREPRODUCT_DELETE']"
@@ -83,7 +102,7 @@
 <script>
 import checkPermission from '@/utils/permission'
 import initData from '@/mixins/crud'
-import { del, onsale } from '@/api/yxStoreProduct'
+import {copy, del, onsale} from '@/api/yxStoreProduct'
 import eForm from './form'
 export default {
   components: { eForm },
@@ -93,6 +112,8 @@ export default {
       delLoading: false,
       visible: false,
       cateId: null,
+      tenantId: 'F0001',
+      tenantIdInput: '',
       queryTypeOptions: [
         { key: 'storeName', display_name: '商品名称' }
       ]
@@ -106,18 +127,36 @@ export default {
   methods: {
     checkPermission,
     beforeInit() {
-      this.url = 'mall-debug/yxStoreProduct'
+      this.url = 'mall/yxStoreProduct'
       const sort = 'id,desc'
       this.params = { page: this.page, size: this.size, sort: sort, isShow: 0, isDel: 0,cateId: this.cateId  }
+      this.config = { bypassTenantId: true, tenantId: this.tenantId}
       const query = this.query
       const type = query.type
       const value = query.value
       if (type && value) { this.params[type] = value }
       return true
     },
+    productCopy(id, tenantId){
+      this.cpLoading = true
+      copy({id: id, tenantId: tenantId}, {bypassTenantId: true, tenantId: this.tenantId}).then(res=> {
+        this.cpLoading = false
+        this.$refs[id].doClose()
+        this.init()
+        this.$notify({
+          title: '复制成功',
+          type: 'success',
+          duration: 2500
+        })
+      }).catch(err => {
+        this.cpLoading = false
+        this.$refs[id].doClose()
+        console.log(err.response.data.message)
+      })
+    },
     subDelete(id) {
       this.delLoading = true
-      del(id).then(res => {
+      del(id, {bypassTenantId: true, tenantId: this.tenantId}).then(res => {
         this.delLoading = false
         this.$refs[id].doClose()
         this.dleChangePage()
@@ -140,7 +179,7 @@ export default {
         type: 'warning'
       })
         .then(() => {
-          onsale(id, { status: status }).then(({ data }) => {
+          onsale(id, { status: status }, {bypassTenantId: true, tenantId: this.tenantId}).then(({ data }) => {
             this.$message({
               message: '操作成功',
               type: 'success',

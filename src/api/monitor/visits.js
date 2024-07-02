@@ -2,21 +2,21 @@ import request from '@/utils/request'
 
 export function count() {
   return request({
-    url: 'mall-debug/visits',
+    url: 'mall/visits',
     method: 'post'
   })
 }
 
 export function get() {
   return request({
-    url: 'mall-debug/visits',
+    url: 'mall/visits',
     method: 'get'
   })
 }
 
 export function getChartData() {
   return request({
-    url: 'mall-debug/visits/chartData',
+    url: 'mall/visits/chartData',
     method: 'get'
   })
 }

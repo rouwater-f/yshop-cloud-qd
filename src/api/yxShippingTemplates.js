@@ -10,7 +10,7 @@ export function add(data, id) {
 
 export function del(ids) {
   return request({
-    url: 'mall-debug/yxShippingTemplates/',
+    url: 'mall/yxShippingTemplates/',
     method: 'delete',
     data: ids
   })
@@ -18,7 +18,7 @@ export function del(ids) {
 
 export function edit(data) {
   return request({
-    url: 'mall-debug/yxShippingTemplates',
+    url: 'mall/yxShippingTemplates',
     method: 'put',
     data
   })
@@ -26,7 +26,7 @@ export function edit(data) {
 
 export function getCity() {
   return request({
-    url: 'mall-debug/yxShippingTemplates/citys',
+    url: 'mall/yxShippingTemplates/citys',
     method: 'get'
   })
 }

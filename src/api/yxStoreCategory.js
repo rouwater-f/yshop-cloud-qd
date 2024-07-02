@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function getCates(params) {
   return request({
-    url: 'mall-debug/yxStoreCategory',
+    url: 'mall/yxStoreCategory',
     method: 'get',
     params
   })
@@ -10,7 +10,7 @@ export function getCates(params) {
 
 export function add(data) {
   return request({
-    url: 'mall-debug/yxStoreCategory',
+    url: 'mall/yxStoreCategory',
     method: 'post',
     data
   })
@@ -18,14 +18,14 @@ export function add(data) {
 
 export function del(id) {
   return request({
-    url: 'mall-debug/yxStoreCategory/' + id,
+    url: 'mall/yxStoreCategory/' + id,
     method: 'delete'
   })
 }
 
 export function edit(data) {
   return request({
-    url: 'mall-debug/yxStoreCategory',
+    url: 'mall/yxStoreCategory',
     method: 'put',
     data
   })

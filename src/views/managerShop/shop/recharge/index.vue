@@ -62,7 +62,7 @@ import pagination from '@crud/Pagination'
 import { formatTimeTwo } from '@/utils/index'
 
 // crud交由presenter持有
-const defaultCrud = CRUD({ title: '充值管理', url: 'mall-debug/yxUserRecharge', sort: 'id,desc', crudMethod: { ...crudYxUserRecharge }, optShow: { add: false, edit: false, del: true, download: true}})
+const defaultCrud = CRUD({ title: '充值管理', url: 'mall/yxUserRecharge', sort: 'id,desc', crudMethod: { ...crudYxUserRecharge }, optShow: { add: false, edit: false, del: true, download: true}})
 const defaultForm = { id: null, uid: null, orderId: null, price: null, rechargeType: null, paid: null, payTime: null, addTime: null, refundPrice: null, nickname: null }
 export default {
   name: 'YxUserRecharge',
