@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function add(data) {
   return request({
-    url: 'mall/yxStoreOrder',
+    url: 'mall-debug/yxStoreOrder',
     method: 'post',
     data
   })
@@ -10,28 +10,28 @@ export function add(data) {
 
 export function del(id) {
   return request({
-    url: 'mall/yxStoreOrder/' + id,
+    url: 'mall-debug/yxStoreOrder/' + id,
     method: 'delete'
   })
 }
 
 export function edit(data) {
   return request({
-    url: 'mall/yxStoreOrder',
+    url: 'mall-debug/yxStoreOrder',
     method: 'put',
     data
   })
 }
 export function updateDelivery(data) {
   return request({
-    url: 'mall/yxStoreOrder/updateDelivery',
+    url: 'mall-debug/yxStoreOrder/updateDelivery',
     method: 'put',
     data
   })
 }
 export function editT(data) {
   return request({
-    url: 'mall/yxStoreOrder/check',
+    url: 'mall-debug/yxStoreOrder/check',
     method: 'put',
     data
   })
@@ -39,7 +39,7 @@ export function editT(data) {
 
 export function refund(data) {
   return request({
-    url: 'mall/yxStoreOrder/refund',
+    url: 'mall-debug/yxStoreOrder/refund',
     method: 'post',
     data
   })
@@ -47,7 +47,7 @@ export function refund(data) {
 
 export function editOrder(data) {
   return request({
-    url: 'mall/yxStoreOrder/edit',
+    url: 'mall-debug/yxStoreOrder/edit',
     method: 'post',
     data
   })
@@ -55,7 +55,7 @@ export function editOrder(data) {
 
 export function remark(data) {
   return request({
-    url: 'mall/yxStoreOrder/remark',
+    url: 'mall-debug/yxStoreOrder/remark',
     method: 'post',
     data
   })
@@ -63,14 +63,14 @@ export function remark(data) {
 
 export function get() {
   return request({
-    url: 'mall/yxExpress',
+    url: 'mall-debug/yxExpress',
     method: 'get'
   })
 }
 
 export function express(data) {
   return request({
-    url: 'mall/yxStoreOrder/express',
+    url: 'mall-debug/yxStoreOrder/express',
     method: 'post',
     data
   })
@@ -78,14 +78,14 @@ export function express(data) {
 
 export function getOrderDetail(id) {
   return request({
-    url: 'mall/getStoreOrderDetail/' + id,
+    url: 'mall-debug/getStoreOrderDetail/' + id,
     method: 'get'
   })
 }
 
 export function getNowOrderStatus(id) {
   return request({
-    url: 'mall/getNowOrderStatus/' + id,
+    url: 'mall-debug/getNowOrderStatus/' + id,
     method: 'get'
   })
 }

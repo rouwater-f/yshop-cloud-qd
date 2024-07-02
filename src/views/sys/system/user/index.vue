@@ -312,7 +312,7 @@ export default {
       })
     },
     beforeInit() {
-      this.url = 'mall/users'
+      this.url = 'mall-debug/users'
       return true
     },
     // 新增与编辑前做的操作

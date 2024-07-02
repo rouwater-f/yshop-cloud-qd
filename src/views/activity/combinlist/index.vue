@@ -99,7 +99,7 @@
       formatTimeTwo,
       checkPermission,
       beforeInit() {
-        this.url = 'mall/yxStorePink'
+        this.url = 'mall-debug/yxStorePink'
         const sort = 'id,desc'
         this.params = { page: this.page, size: this.size, sort: sort }
         const query = this.query

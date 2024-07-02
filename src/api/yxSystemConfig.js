@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function add(data) {
   return request({
-    url: 'mall/yxSystemConfig',
+    url: 'mall-debug/yxSystemConfig',
     method: 'post',
     data
   })
@@ -10,14 +10,14 @@ export function add(data) {
 
 export function del(id) {
   return request({
-    url: 'mall/yxSystemConfig/' + id,
+    url: 'mall-debug/yxSystemConfig/' + id,
     method: 'delete'
   })
 }
 
 export function edit(data) {
   return request({
-    url: 'mall/yxSystemConfig',
+    url: 'mall-debug/yxSystemConfig',
     method: 'put',
     data
   })
@@ -25,7 +25,7 @@ export function edit(data) {
 
 export function get() {
   return request({
-    url: 'mall/yxSystemConfig?size=500',
+    url: 'mall-debug/yxSystemConfig?size=500',
     method: 'get'
   })
 }

@@ -82,7 +82,7 @@ export default {
   methods: {
     checkPermission,
     beforeInit() {
-      this.url = 'mall/yxSystemGroupData'
+      this.url = 'mall-debug/yxSystemGroupData'
       const sort = 'id,desc'
       this.params = { page: this.page, size: this.size, sort: sort, groupName: 'yshop_recharge_price_ways' }
       return true

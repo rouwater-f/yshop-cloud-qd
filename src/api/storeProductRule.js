@@ -10,7 +10,7 @@ export function add(data, id) {
 
 export function del(ids) {
   return request({
-    url: 'mall/yxStoreProductRule/',
+    url: 'mall-debug/yxStoreProductRule/',
     method: 'delete',
     data: ids
   })
@@ -18,7 +18,7 @@ export function del(ids) {
 
 export function edit(data) {
   return request({
-    url: 'mall/yxStoreProductRule',
+    url: 'mall-debug/yxStoreProductRule',
     method: 'put',
     data
   })

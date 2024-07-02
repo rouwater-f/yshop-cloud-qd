@@ -190,7 +190,7 @@ export default {
   },
   methods: {
     beforeInit() {
-      this.url = 'mall/yxStoreAfterSales/sales/List'
+      this.url = 'mall-debug/yxStoreAfterSales/sales/List'
       this.params = {
         page: this.page,
         size: this.size,
