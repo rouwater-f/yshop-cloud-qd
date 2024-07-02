@@ -92,7 +92,7 @@ export default {
   methods: {
     checkPermission,
     beforeInit() {
-      this.url = 'mall/yxSystemUserLevel'
+      this.url = 'mall-debug/yxSystemUserLevel'
       const sort = 'id,desc'
       this.params = { page: this.page, size: this.size, sort: sort }
       return true

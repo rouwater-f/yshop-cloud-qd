@@ -55,7 +55,7 @@ import MaterialList from "@/components/material";
 import add from './form'
 
 // crud交由presenter持有
-const defaultCrud = CRUD({ title: '运费模板', url: 'mall/yxShippingTemplates', sort: 'id,desc', crudMethod: { ...crudYxShippingTemplates }})
+const defaultCrud = CRUD({ title: '运费模板', url: 'mall-debug/yxShippingTemplates', sort: 'id,desc', crudMethod: { ...crudYxShippingTemplates }})
 const defaultForm = { id: null, name: null, type: null, regionInfo: null, appoint: null, appointInfo: null, createTime: null, updateTime: null, isDel: null, sort: null }
 export default {
   name: 'YxShippingTemplates',

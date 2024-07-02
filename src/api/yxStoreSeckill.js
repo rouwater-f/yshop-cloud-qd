@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function add(data) {
   return request({
-    url: 'mall/yxStoreSeckill',
+    url: 'mall-debug/yxStoreSeckill',
     method: 'post',
     data
   })
@@ -10,14 +10,14 @@ export function add(data) {
 
 export function del(id) {
   return request({
-    url: 'mall/yxStoreSeckill/' + id,
+    url: 'mall-debug/yxStoreSeckill/' + id,
     method: 'delete'
   })
 }
 
 export function edit(data) {
   return request({
-    url: 'mall/yxStoreSeckill',
+    url: 'mall-debug/yxStoreSeckill',
     method: 'put',
     data
   })
@@ -25,7 +25,7 @@ export function edit(data) {
 
 export function getSecKillInfo(id) {
   return request({
-    url: 'mall/yxStoreSecKill/info/' + id,
+    url: 'mall-debug/yxStoreSecKill/info/' + id,
     method: 'get'
   })
 }

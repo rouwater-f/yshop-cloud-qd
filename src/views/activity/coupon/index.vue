@@ -128,7 +128,7 @@ export default {
     formatTime,
     checkPermission,
     beforeInit() {
-      this.url = 'mall/yxStoreCoupon'
+      this.url = 'mall-debug/yxStoreCoupon'
       const sort = 'id,desc'
       this.params = { page: this.page, size: this.size, sort: sort, isDel: 0 }
       return true

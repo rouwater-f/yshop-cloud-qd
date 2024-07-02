@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function add(data) {
   return request({
-    url: 'mall/yxStoreBargain',
+    url: 'mall-debug/yxStoreBargain',
     method: 'put',
     data
   })
@@ -10,14 +10,14 @@ export function add(data) {
 
 export function del(id) {
   return request({
-    url: 'mall/yxStoreBargain/' + id,
+    url: 'mall-debug/yxStoreBargain/' + id,
     method: 'delete'
   })
 }
 
 export function edit(data) {
   return request({
-    url: 'mall/yxStoreBargain',
+    url: 'mall-debug/yxStoreBargain',
     method: 'put',
     data
   })

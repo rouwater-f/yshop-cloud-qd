@@ -179,7 +179,7 @@ export default {
     },
     checkPermission,
     beforeInit() {
-      this.url = 'mall/yxStoreProduct'
+      this.url = 'mall-debug/yxStoreProduct'
       const sort = 'id,desc'
       this.params = {page: this.page, size: this.size, sort: sort, isShow: 1, isDel: 0,isIntegral:0}
       const query = this.query

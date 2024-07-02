@@ -7,7 +7,7 @@ import request from '@/utils/request'
  */
 export function productDataApi(params) {
   return request({
-    url: 'mall/dashboard/getProductDayData',
+    url: 'mall-debug/dashboard/getProductDayData',
     method: 'GET',
     params
   })
@@ -19,7 +19,7 @@ export function productDataApi(params) {
  */
 export function productRankApi(params) {
   return request({
-    url: 'mall/dashboard/ranking',
+    url: 'mall-debug/dashboard/ranking',
     method: 'get',
     params
   })
@@ -31,7 +31,7 @@ export function productRankApi(params) {
  */
 export function productTrendApi(params) {
   return request({
-    url: 'mall/dashboard/trend',
+    url: 'mall-debug/dashboard/trend',
     method: 'get',
     params
   })
@@ -42,7 +42,7 @@ export function productTrendApi(params) {
  */
 export function tradeDataApi() {
   return request({
-    url: 'mall/dashboard/getTradeDataByDate',
+    url: 'mall-debug/dashboard/getTradeDataByDate',
     method: 'get'
   })
 }
@@ -53,7 +53,7 @@ export function tradeDataApi() {
  */
 export function tradeOverviewApi(params) {
   return request({
-    url: 'mall/dashboard/overview',
+    url: 'mall-debug/dashboard/overview',
     method: 'get',
     params
   })
@@ -65,7 +65,7 @@ export function tradeOverviewApi(params) {
  */
 export function tradeTrendApi(params) {
   return request({
-    url: 'mall/dashboard/trend',
+    url: 'mall-debug/dashboard/trend',
     method: 'get',
     params
   })
@@ -76,7 +76,7 @@ export function tradeTrendApi(params) {
  */
 export function userTotalData() {
   return request({
-    url: 'mall/dashboard/getUserTotal',
+    url: 'mall-debug/dashboard/getUserTotal',
     method: 'get'
   })
 }
@@ -86,7 +86,7 @@ export function userTotalData() {
  */
 export function userAreaData() {
   return request({
-    url: 'mall/dashboard/area',
+    url: 'mall-debug/dashboard/area',
     method: 'get'
   })
 }
@@ -96,7 +96,7 @@ export function userAreaData() {
  */
 export function userChannelData() {
   return request({
-    url: 'mall/dashboard/channel',
+    url: 'mall-debug/dashboard/channel',
     method: 'get'
   })
 }
@@ -107,7 +107,7 @@ export function userChannelData() {
  */
 export function userOverviewData(params) {
   return request({
-    url: 'mall/dashboard/overview',
+    url: 'mall-debug/dashboard/overview',
     method: 'get',
     params
   })
@@ -118,7 +118,7 @@ export function userOverviewData(params) {
  */
 export function userSexData() {
   return request({
-    url: 'mall/dashboard/sex',
+    url: 'mall-debug/dashboard/sex',
     method: 'get'
   })
 }
@@ -129,7 +129,7 @@ export function userSexData() {
  */
 export function userOverviewListApi(params) {
   return request({
-    url: 'mall/dashboard/overview/list',
+    url: 'mall-debug/dashboard/overview/list',
     method: 'get',
     params
   })
