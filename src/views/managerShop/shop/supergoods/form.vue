@@ -340,8 +340,8 @@
           <el-col v-bind="grid">
             <el-form-item label="仅自提：">
               <el-radio-group v-model="formValidate.is_postage" >
-                <el-radio :label="1" class="radio">开启</el-radio>
-                <el-radio :label="0">关闭</el-radio>
+                <el-radio :label="0" class="radio">开启</el-radio>
+                <el-radio :label="1">关闭</el-radio>
               </el-radio-group>
             </el-form-item>
           </el-col>
