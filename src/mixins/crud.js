@@ -341,6 +341,16 @@ export default {
       }).catch(() => {
         this.downloadLoading = false
       })
+    },
+    downloadPinkDataMethod() {
+      this.beforeInit()
+      this.downloadLoading = true
+      download(this.url + '/downloadPinkData', this.params).then(result => {
+        this.downloadFile(result, this.title + '数据', 'xlsx')
+        this.downloadLoading = false
+      }).catch(() => {
+        this.downloadLoading = false
+      })
     }
   }
 }
