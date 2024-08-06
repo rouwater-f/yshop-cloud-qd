@@ -268,6 +268,8 @@ export default {
         {value: '1', label: '导出选中'},
         {value: '2', label: '导出全部配送清单'},
         {value: '3', label: '导出选中配送清单'},
+        {value: '4', label: '导出全部打印清单'},
+        {value: '5', label: '导出选中打印清单'},
       ],
       caculateInfo: {
         orderNum : 0,
@@ -728,6 +730,27 @@ export default {
             this.listContent = JSON.stringify(this.listContent);
             this.beforeInit();
             this.downloadPinkDataMethod();
+          }
+          break;
+        case "4":
+          this.listContent = "";
+          this.beforeInit();
+          this.downloadPrintDataMethod();
+          break;
+        case "5":
+          if(list.length == 0){
+            this.$message({
+              message: '请选择订单',
+              type: 'warning'
+            });
+          }else {
+            this.listContent = [];
+            list.forEach((item) => {
+              this.listContent.push(item.orderId);
+            })
+            this.listContent = JSON.stringify(this.listContent);
+            this.beforeInit();
+            this.downloadPrintDataMethod();
           }
           break;
         default:

@@ -351,6 +351,16 @@ export default {
       }).catch(() => {
         this.downloadLoading = false
       })
+    },
+    downloadPrintDataMethod() {
+      this.beforeInit()
+      this.downloadLoading = true
+      download(this.url + '/downloadPrintData', this.params).then(result => {
+        this.downloadFile(result, this.title + '数据', 'xlsx')
+        this.downloadLoading = false
+      }).catch(() => {
+        this.downloadLoading = false
+      })
     }
   }
 }
