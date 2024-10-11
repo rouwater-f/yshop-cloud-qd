@@ -86,7 +86,8 @@ export default {
     return {
       delLoading: false,
       queryTypeOptions: [
-        { key: 'couponTitle', display_name: '优惠券名称' }
+        { key: 'couponTitle', display_name: '优惠券名称' },
+        { key: 'isFail', display_name: '使用状态' }
       ]
     }
   },

@@ -270,6 +270,10 @@ export default {
         {value: '3', label: '导出选中配送清单'},
         {value: '4', label: '导出全部打印清单'},
         {value: '5', label: '导出选中打印清单'},
+        {value: '6', label: '导出全部配货清单'},
+        {value: '7', label: '导出选中配货清单'},
+        {value: '8', label: '导出全部结算核对清单'},
+        {value: '9', label: '导出选中结算核对清单'},
       ],
       caculateInfo: {
         orderNum : 0,
@@ -751,6 +755,48 @@ export default {
             this.listContent = JSON.stringify(this.listContent);
             this.beforeInit();
             this.downloadPrintDataMethod();
+          }
+          break;
+        case "6":
+          this.listContent = "";
+          this.beforeInit();
+          this.downloadDistriDataMethod();
+          break;
+        case "7":
+          if(list.length == 0){
+            this.$message({
+              message: '请选择订单',
+              type: 'warning'
+            });
+          }else {
+            this.listContent = [];
+            list.forEach((item) => {
+              this.listContent.push(item.orderId);
+            })
+            this.listContent = JSON.stringify(this.listContent);
+            this.beforeInit();
+            this.downloadDistriDataMethod();
+          }
+          break;
+        case "8":
+          this.listContent = "";
+          this.beforeInit();
+          this.downloadAccountDataMethod();
+          break;
+        case "9":
+          if(list.length == 0){
+            this.$message({
+              message: '请选择订单',
+              type: 'warning'
+            });
+          }else {
+            this.listContent = [];
+            list.forEach((item) => {
+              this.listContent.push(item.orderId);
+            })
+            this.listContent = JSON.stringify(this.listContent);
+            this.beforeInit();
+            this.downloadAccountDataMethod();
           }
           break;
         default:

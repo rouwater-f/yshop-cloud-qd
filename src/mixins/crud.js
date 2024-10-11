@@ -361,6 +361,26 @@ export default {
       }).catch(() => {
         this.downloadLoading = false
       })
+    },
+    downloadDistriDataMethod() {
+      this.beforeInit()
+      this.downloadLoading = true
+      download(this.url + '/downloadDistriData', this.params).then(result => {
+        this.downloadFile(result, this.title + '数据', 'xlsx')
+        this.downloadLoading = false
+      }).catch(() => {
+        this.downloadLoading = false
+      })
+    },
+    downloadAccountDataMethod() {
+      this.beforeInit()
+      this.downloadLoading = true
+      download(this.url + '/downloadAccountData', this.params).then(result => {
+        this.downloadFile(result, this.title + '数据', 'xlsx')
+        this.downloadLoading = false
+      }).catch(() => {
+        this.downloadLoading = false
+      })
     }
   }
 }
