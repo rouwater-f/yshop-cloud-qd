@@ -18,6 +18,16 @@
             :value="item.value"
           />
         </el-select>
+        <el-select v-model="query.status"
+                   clearable placeholder="交付状态"
+                   class="filter-item"
+                   style="width: 130px">
+          <el-option
+            v-for="item in statusOptions"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value" />
+        </el-select>
         <el-date-picker
           v-model="createTime"
           :default-time="['00:00:00','23:59:59']"
@@ -243,15 +253,8 @@ export default {
         { key: 'userPhone', display_name: '用户电话' }
       ],
       statusOptions: [
-        { value: '0', label: '未支付' },
-        { value: '1', label: '未发货' },
-        { value: '2', label: '待收货' },
-        { value: '3', label: '待评价' },
-        { value: '4', label: '交易完成' },
-        // { value: '5', label: '待核销' },
-        { value: '-1', label: '退款中' },
-        { value: '-2', label: '已退款' },
-        { value: '-4', label: '已删除' }
+        { value: '0', label: '未交付' },
+        { value: '2', label: '已交付' }
       ],
       typeOptions: [
         { value: '0', label: '所有订单' },
@@ -304,8 +307,10 @@ export default {
       this.params = { page: this.page, size: this.size, sort: sort, orderStatus: this.status, orderType: this.orderType, createTime: this.createTime, listContent: this.listContent, paid:1, refundStatus:0  }
       const query = this.query
       const type = query.type
+      const status = query.status
       const value = query.value
       if (type && value) { this.params[type] = value }
+      if (status) {this.params['status'] = status}
       return true
     },
     subDelete(id) {
