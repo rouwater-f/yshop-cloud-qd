@@ -168,7 +168,7 @@ export default {
     },
     checkPermission,
     beforeInit() {
-      this.url = 'mall/yxStoreProduct'
+      this.url = 'mall-debug/yxStoreProduct'
       const sort = 'id,desc'
       this.params = { page: this.page, size: this.size, sort: sort, isShow: 1, isDel: 0,cateId: this.cateId }
       this.config = { bypassTenantId: true, tenantId: this.tenantId}

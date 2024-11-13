@@ -111,7 +111,7 @@ export default {
         .catch(() => { })
     },
     beforeInit() {
-      this.url = 'mall/yxUserBill'
+      this.url = 'mall-debug/yxUserBill'
       const sort = 'id,desc'
       this.params = {
         page: this.page,

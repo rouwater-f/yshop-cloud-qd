@@ -302,7 +302,7 @@ export default {
       this.toQuery()
     },
     beforeInit() {
-      this.url = 'mall/yxStoreOrder'
+      this.url = 'mall-debug/yxStoreOrder'
       const sort = 'id,desc'
       this.params = { page: this.page, size: this.size, sort: sort, orderStatus: this.status, orderType: this.orderType, createTime: this.createTime, listContent: this.listContent, paid:1, refundStatus:0  }
       const query = this.query

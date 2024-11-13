@@ -49,14 +49,18 @@
         </template>
       </el-table-column>
       <el-table-column v-if="columns.visible('sort')" label="排序" prop="sort" sortable/>
-      <el-table-column v-permission="['admin','YXSTORECATEGORY_EDIT','YXSTORECATEGORY_DELETE']" label="操作" width="130px" align="center" fixed="right">
+      <el-table-column v-permission="['admin','YXSTORECATEGORY_EDIT','YXSTORECATEGORY_DELETE']" label="操作" width="230px" align="center" fixed="right">
         <template slot-scope="scope">
-          <udOperation
-            :data="scope.row"
-            :permission="permission"
-            :disabled-dle="scope.row.id === 1"
-            msg="确定删除吗,如果存在下级节点则一并删除，此操作不能撤销！"
-          />
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <el-button size="mini" type="primary" @click="openGoodsDialog(scope.row)">管理</el-button>
+            <!-- 其他操作按钮 -->
+            <udOperation
+              :data="scope.row"
+              :permission="permission"
+              :disabled-dle="scope.row.id === 1"
+              msg="确定删除吗,如果存在下级节点则一并删除，此操作不能撤销！"
+            />
+          </div>
         </template>
       </el-table-column>
     </el-table>
@@ -64,6 +68,7 @@
 </template>
 
 <script>
+import vgood from '@/views/components/vgood'
 import crudDept from '@/api/yxStoreVCategory'
 import Treeselect from '@riophae/vue-treeselect'
 import '@riophae/vue-treeselect/dist/vue-treeselect.css'
@@ -75,11 +80,11 @@ import picUpload from '@/components/pic-upload'
 import MaterialList from '@/components/material'
 
 // crud交由presenter持有
-const defaultCrud = CRUD({ title: '运营分类', url: 'mall/yxStoreVCategory', sort: 'sort,desc', crudMethod: { ...crudDept }})
+const defaultCrud = CRUD({ title: '运营分类', url: 'mall-debug/yxStoreVCategory', sort: 'sort,desc', crudMethod: { ...crudDept }})
 const defaultForm = { id: null, cateName: null, pid: 0, isShow: 1 , sort:  1}
 export default {
   name: 'Dept',
-  components: { Treeselect, crudOperation, rrOperation, udOperation, picUpload, MaterialList },
+  components: { Treeselect, crudOperation, rrOperation, udOperation, picUpload, MaterialList, vgood },
   mixins: [presenter(defaultCrud), header(), form(defaultForm), crud()],
   data() {
     return {
@@ -129,7 +134,11 @@ export default {
     },
     checkboxT(row, rowIndex) {
       return row.id !== 1
-    }
+    },
+    openGoodsDialog(row) {
+      this.selectedCategory = row; // 保存当前选中的分类信息
+      this.showGoodsDialog = true; // 显示商品选择对话框
+    },
   }
 }
 </script>

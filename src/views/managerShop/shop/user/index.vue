@@ -166,7 +166,7 @@ export default {
         .catch(() => { })
     },
     beforeInit() {
-      this.url = 'mall/yxUser'
+      this.url = 'mall-debug/yxUser'
       const sort = 'uid,desc'
       this.params = { page: this.page, size: this.size, sort: sort, userType: this.userType }
       const query = this.query

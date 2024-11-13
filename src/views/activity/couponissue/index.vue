@@ -99,7 +99,7 @@ export default {
     formatTimeTwo,
     checkPermission,
     beforeInit() {
-      this.url = 'mall/yxStoreCouponIssue'
+      this.url = 'mall-debug/yxStoreCouponIssue'
       const sort = 'id,desc'
       this.params = { page: this.page, size: this.size, sort: sort }
       return true

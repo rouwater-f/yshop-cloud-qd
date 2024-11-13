@@ -3,7 +3,7 @@ import request from '@/utils/request'
 export function add(data, config) {
   if (config && config.bypassTenantId) {
     return request({
-      url: 'mall/yxStoreProduct/addOrSave',
+      url: 'mall-debug/yxStoreProduct/addOrSave',
       method: 'post',
       data,
       bypassTenantId: true,
@@ -13,7 +13,7 @@ export function add(data, config) {
     })
   } else {
     return request({
-      url: 'mall/yxStoreProduct/addOrSave',
+      url: 'mall-debug/yxStoreProduct/addOrSave',
       method: 'post',
       data
     })
@@ -23,7 +23,7 @@ export function add(data, config) {
 export function del(id, config) {
   if (config && config.bypassTenantId) {
     return request({
-      url: 'mall/yxStoreProduct/' + id,
+      url: 'mall-debug/yxStoreProduct/' + id,
       method: 'delete',
       bypassTenantId: true,
       headers: {
@@ -32,7 +32,7 @@ export function del(id, config) {
     })
   } else {
     return request({
-      url: 'mall/yxStoreProduct/' + id,
+      url: 'mall-debug/yxStoreProduct/' + id,
       method: 'delete'
     })
   }
@@ -41,7 +41,7 @@ export function del(id, config) {
 export function edit(data, config) {
   if (config && config.bypassTenantId) {
     return request({
-      url: 'mall/yxStoreProduct',
+      url: 'mall-debug/yxStoreProduct',
       method: 'put',
       data,
       bypassTenantId: true,
@@ -51,7 +51,7 @@ export function edit(data, config) {
     })
   } else {
     return request({
-      url: 'mall/yxStoreProduct',
+      url: 'mall-debug/yxStoreProduct',
       method: 'put',
       data
     })
@@ -61,7 +61,7 @@ export function edit(data, config) {
 export function copy(data, config) {
   if (config && config.bypassTenantId) {
     return request({
-      url: 'mall/yxStoreProduct/copy',
+      url: 'mall-debug/yxStoreProduct/copy',
       method: 'post',
       data,
       bypassTenantId: true,
@@ -71,7 +71,7 @@ export function copy(data, config) {
     })
   } else {
     return request({
-      url: 'mall/yxStoreProduct/copy',
+      url: 'mall-debug/yxStoreProduct/copy',
       method: 'post',
       data
     })
@@ -81,7 +81,7 @@ export function copy(data, config) {
 export function onsale(id, data, config) {
   if (config && config.bypassTenantId) {
     return request({
-      url: 'mall/yxStoreProduct/onsale/' + id,
+      url: 'mall-debug/yxStoreProduct/onsale/' + id,
       method: 'post',
       data,
       bypassTenantId: true,
@@ -91,7 +91,7 @@ export function onsale(id, data, config) {
     })
   } else {
     return request({
-      url: 'mall/yxStoreProduct/onsale/' + id,
+      url: 'mall-debug/yxStoreProduct/onsale/' + id,
       method: 'post',
       data
     })
@@ -101,7 +101,7 @@ export function onsale(id, data, config) {
 export function recovery(id, config) {
   if (config && config.bypassTenantId) {
     return request({
-      url: 'mall/yxStoreProduct/recovery/' + id,
+      url: 'mall-debug/yxStoreProduct/recovery/' + id,
       method: 'delete',
       bypassTenantId: true,
       headers: {
@@ -110,7 +110,7 @@ export function recovery(id, config) {
     })
   } else {
     return request({
-      url: 'mall/yxStoreProduct/recovery/' + id,
+      url: 'mall-debug/yxStoreProduct/recovery/' + id,
       method: 'delete'
     })
   }
@@ -120,7 +120,7 @@ export function isFormatAttr(id, data, config) {
   if (config && config.bypassTenantId) {
     console.log('is reconfig')
     return request({
-      url: 'mall/yxStoreProduct/isFormatAttr/' + id,
+      url: 'mall-debug/yxStoreProduct/isFormatAttr/' + id,
       method: 'post',
       data,
       bypassTenantId: true,
@@ -130,7 +130,7 @@ export function isFormatAttr(id, data, config) {
     })
   } else {
     return request({
-      url: 'mall/yxStoreProduct/isFormatAttr/' + id,
+      url: 'mall-debug/yxStoreProduct/isFormatAttr/' + id,
       method: 'post',
       data
     })
@@ -140,7 +140,7 @@ export function isFormatAttr(id, data, config) {
 export function isFormatAttrForActivity(id, data, config) {
   if (config && config.bypassTenantId) {
     return request({
-      url: 'mall/yxStoreProduct/isFormatAttrForActivity/' + id,
+      url: 'mall-debug/yxStoreProduct/isFormatAttrForActivity/' + id,
       method: 'post',
       data,
       bypassTenantId: true,
@@ -150,7 +150,7 @@ export function isFormatAttrForActivity(id, data, config) {
     })
   } else {
     return request({
-      url: 'mall/yxStoreProduct/isFormatAttrForActivity/' + id,
+      url: 'mall-debug/yxStoreProduct/isFormatAttrForActivity/' + id,
       method: 'post',
       data
     })
@@ -159,7 +159,7 @@ export function isFormatAttrForActivity(id, data, config) {
 export function setAttr(id, data, config) {
   if (config && config.bypassTenantId) {
     return request({
-      url: 'mall/yxStoreProduct/setAttr/' + id,
+      url: 'mall-debug/yxStoreProduct/setAttr/' + id,
       method: 'post',
       data,
       bypassTenantId: true,
@@ -169,7 +169,7 @@ export function setAttr(id, data, config) {
     })
   } else {
     return request({
-      url: 'mall/yxStoreProduct/setAttr/' + id,
+      url: 'mall-debug/yxStoreProduct/setAttr/' + id,
       method: 'post',
       data
     })
@@ -179,7 +179,7 @@ export function setAttr(id, data, config) {
 export function clearAttr(id, config) {
   if (config && config.bypassTenantId) {
     return request({
-      url: 'mall/yxStoreProduct/clearAttr/' + id,
+      url: 'mall-debug/yxStoreProduct/clearAttr/' + id,
       method: 'post',
       bypassTenantId: true,
       headers: {
@@ -188,7 +188,7 @@ export function clearAttr(id, config) {
     })
   } else {
     return request({
-      url: 'mall/yxStoreProduct/clearAttr/' + id,
+      url: 'mall-debug/yxStoreProduct/clearAttr/' + id,
       method: 'post'
     })
   }
@@ -197,7 +197,7 @@ export function clearAttr(id, config) {
 export function getAttr(id, config) {
   if (config && config.bypassTenantId) {
     return request({
-      url: 'mall/yxStoreProduct/attr/' + id,
+      url: 'mall-debug/yxStoreProduct/attr/' + id,
       method: 'get',
       bypassTenantId: true,
       headers: {
@@ -206,7 +206,7 @@ export function getAttr(id, config) {
     })
   } else {
     return request({
-      url: 'mall/yxStoreProduct/attr/' + id,
+      url: 'mall-debug/yxStoreProduct/attr/' + id,
       method: 'get'
     })
   }
@@ -215,7 +215,7 @@ export function getAttr(id, config) {
 export function getInfo(id, config) {
   if (config && config.bypassTenantId) {
     return request({
-      url: 'mall/yxStoreProduct/info/' + id,
+      url: 'mall-debug/yxStoreProduct/info/' + id,
       method: 'get',
       bypassTenantId: true,
       headers: {
@@ -224,7 +224,7 @@ export function getInfo(id, config) {
     })
   } else {
     return request({
-      url: 'mall/yxStoreProduct/info/' + id,
+      url: 'mall-debug/yxStoreProduct/info/' + id,
       method: 'get'
     })
   }
