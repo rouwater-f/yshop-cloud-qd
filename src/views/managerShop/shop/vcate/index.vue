@@ -68,7 +68,7 @@
 </template>
 
 <script>
-import vgood from '@/views/components/vgood'
+import vgoods from '@/views/components/vgoods'
 import crudDept from '@/api/yxStoreVCategory'
 import Treeselect from '@riophae/vue-treeselect'
 import '@riophae/vue-treeselect/dist/vue-treeselect.css'
@@ -84,10 +84,11 @@ const defaultCrud = CRUD({ title: '运营分类', url: 'mall-debug/yxStoreVCateg
 const defaultForm = { id: null, cateName: null, pid: 0, isShow: 1 , sort:  1}
 export default {
   name: 'Dept',
-  components: { Treeselect, crudOperation, rrOperation, udOperation, picUpload, MaterialList, vgood },
+  components: {Treeselect, crudOperation, rrOperation, udOperation, picUpload, MaterialList, vgoods },
   mixins: [presenter(defaultCrud), header(), form(defaultForm), crud()],
   data() {
     return {
+      showGoodsDialog: false,
       picArr: [],
       depts: [],
       rules: {
@@ -136,6 +137,7 @@ export default {
       return row.id !== 1
     },
     openGoodsDialog(row) {
+      console.log(row)
       this.selectedCategory = row; // 保存当前选中的分类信息
       this.showGoodsDialog = true; // 显示商品选择对话框
     },
